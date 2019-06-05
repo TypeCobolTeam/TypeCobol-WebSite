@@ -19,27 +19,34 @@ class Footer extends React.Component<any, any> {
         <Container>
           <Content>
             <Columns>
-              <Column isFull>
+              <Column>
                 <p>
                   Made with
-                  <Icon
-                    hasTextColor="danger"
-                    className="fa fa-heart"
-                    style={{ margin: "5px" }}
-                  />
+                  <Icon className="fa fa-heart" style={{ margin: "5px" }} />
                   by <a>TypeCobol Team</a>
                 </p>
               </Column>
             </Columns>
             <Content isSize="small">
               <p>
-                The source code is licensed under of the TypeCobol project is
-                licensed under
-                <a target="_blank">CeCILL-C</a>.
+                The TypeCobol project is licensed under{" "}
+                <a
+                  target="_blank"
+                  href="https://spdx.org/licenses/CECILL-C.html"
+                >
+                  CeCILL-C
+                </a>
+                .
               </p>
               <p>
-                The website content is licensed under
-                <a target="_blank">CC ANS 4.0</a>.
+                The website content is licensed under{" "}
+                <a
+                  target="_blank"
+                  href="https://spdx.org/licenses/CECILL-C.html"
+                >
+                  CeCILL-C
+                </a>
+                .
               </p>
             </Content>
           </Content>
