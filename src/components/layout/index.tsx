@@ -7,7 +7,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 library.add(fab, faCheckSquare, faCoffee);
 
-import "../style/index.scss";
+import "../../scss/index.scss";
 import Header from "./Header";
 import Foot from "./Footer";
 

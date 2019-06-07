@@ -1,5 +1,5 @@
 import * as React from "react";
-import Layout from "../layout";
+import Layout from "../components/layout";
 import { graphql } from "gatsby";
 import Helmet from "react-helmet";
 import { Container, Heading } from "react-bulma-components";
