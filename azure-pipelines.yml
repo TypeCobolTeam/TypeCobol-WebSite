@@ -1,0 +1,33 @@
+trigger:
+  branches:
+    include:
+    - releases
+
+pr:
+  branches:
+    include:
+    - releases
+    - develop
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+  # Todo: find a way to specify LTS
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+  condition: always()
+
+- script: yarn
+  displayName: 'Install dependencies `yarn`'
+  condition: succeeded()
+
+- script: yarn test
+  displayName: 'Run tests `yarn test`'
+  condition: succeeded()
+
+- script: yarn deploy
+  displayName: 'Run deployment to master `yarn deploy`'
+  condition: and(succeeded(), in(variables['Build.Reason'], 'IndividualCI', 'BatchedCI'))
