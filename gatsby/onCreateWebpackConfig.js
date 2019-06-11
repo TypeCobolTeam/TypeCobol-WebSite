@@ -1,9 +1,6 @@
-"use strict";
-
 const { resolve } = require("path");
-const webpack = require("webpack");
 
-module.exports = ({ stage, actions }) => {
+const onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       modules: [
@@ -16,3 +13,5 @@ module.exports = ({ stage, actions }) => {
     }
   });
 };
+
+module.exports = onCreateWebpackConfig;
