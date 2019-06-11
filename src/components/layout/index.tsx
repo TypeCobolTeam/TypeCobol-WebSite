@@ -8,8 +8,8 @@ import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 library.add(fab, faCheckSquare, faCoffee);
 
 import "../../scss/index.scss";
-import Header from "./Header";
-import Foot from "./Footer";
+import Header from "../Header";
+import Foot from "../Footer";
 
 class Layout extends React.Component<any, any> {
   constructor(props: any) {
