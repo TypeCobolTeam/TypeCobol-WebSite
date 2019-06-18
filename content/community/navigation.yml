@@ -1,0 +1,12 @@
+- divider: Main
+- title: Hello
+  default: true
+  link: /community/support
+  color: none
+  icon: caret-up
+- divider: Not Main
+- title: Hello2
+  default: true
+  link: /community/index
+  color: red
+  icon: caret-down

@@ -1,5 +1,5 @@
 ---
-title: Where to get Support ?
+title: Where to get community ?
 ---
 
 Support is here :)
