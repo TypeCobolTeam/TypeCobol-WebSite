@@ -60,8 +60,28 @@ const createPage = async ({ graphql, actions }) => {
       redirectInBrowser: true,
       toPath: slug
     });
+    console.log(`Redirect ${redirect_from} to ${slug}`);
 
-    // For debug: console.log(`\n`, `Created page ${slug}`);
+    // add redirections for index pages
+    if (slug.includes("index")) {
+      let redirect_from = slug.replace("index.html", "");
+      createRedirect({
+        fromPath: redirect_from,
+        isPermanent: true,
+        redirectInBrowser: true,
+        toPath: slug
+      });
+      console.log(`Redirect ${redirect_from} to ${slug}`);
+
+      redirect_from = redirect_from.replace(/\/$/, "");
+      createRedirect({
+        fromPath: redirect_from,
+        isPermanent: true,
+        redirectInBrowser: true,
+        toPath: slug
+      });
+      console.log(`Redirect ${redirect_from} to ${slug}`);
+    }
   });
 
   return;
