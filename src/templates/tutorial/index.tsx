@@ -1,8 +1,9 @@
 import * as React from "react"
 import { graphql } from "gatsby"
+import { require } from "path"
 
-// @ts-ignore disable tslint warning about yml module not found
-import NavigationYml from "@content/Tutorial/navigation.yml"
+const NavigationYml = require("@content/Tutorial/navigation.yml")
+
 import Layout from "@components/Layout"
 import { processMarkdownHTML } from "@utils/processMarkdownHTML"
 
