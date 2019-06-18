@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 // @ts-ignore ignore import errors because of importing a yaml file
 import NavbarYml from "@content/navbar.yml"
 
-import HelmetInit from "../Helmet"
+import HelmetInit from "@components/Helmet"
 
 import { Layout, Menu, Typography, Icon } from "antd"
 const Head = Layout.Header
