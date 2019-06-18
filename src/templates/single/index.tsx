@@ -1,39 +1,43 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 
-interface pageProps {
+interface PageProps {
   data: {
-    site: {
-      siteMetadata: {
+    markdownRemark: {
+      frontmatter: {
         title: string;
       };
+      html: string;
     };
   };
 }
 
 export const pageQuery = graphql`
-  query SingleMarkdown {
-    site {
-      siteMetadata {
+  query SingleTplMarkdown($id: String!) {
+    markdownRemark(id: { eq: $id }) {
+      frontmatter {
         title
       }
+      html
     }
   }
 `;
 
-class TutorialTemplate extends React.Component<pageProps, {}> {
+class SingleTemplate extends React.Component<PageProps, {}> {
   readonly hello = `Hello`;
   public render() {
-    const { title } = this.props.data.site.siteMetadata;
+    const { html, frontmatter } = this.props.data.markdownRemark;
+    const { title } = frontmatter;
     return (
-      <div>
-        <h1>{this.hello} TypeScript world!</h1>
-        <p>
-          This site is named <strong>{title}</strong>
-        </p>
-      </div>
+      <Layout>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: processMarkdownHTML(html)
+          }}
+        />
+      </Layout>
     );
   }
 }
 
-export default TutorialTemplate;
+export default SingleTemplate;
