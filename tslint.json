@@ -15,7 +15,10 @@
     "no-console": [false],
     "no-var-requires": true,
     "quotemark": [true, "double", "jsx-double"],
-    "no-implicit-dependencies": [true, ["@content", "@components", "@utils"]]
+    "no-implicit-dependencies": [
+      true,
+      ["@content", "@components", "@utils", "@communityNav", "@tutorialNav"]
+    ]
   },
   "rulesDirectory": []
 }

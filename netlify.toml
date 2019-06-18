@@ -6,6 +6,7 @@
 # deploy contexts will inherit these settings.
 [context.production]
   environment = { NODE_ENV = "production", NODE_VERSION = "10" }
+  command = "yarn build"
 
 # Deploy Preview context: all deploys resulting from a pull/merge request will 
 # inherit these settings.

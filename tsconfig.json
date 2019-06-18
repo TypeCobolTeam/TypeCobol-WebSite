@@ -18,7 +18,9 @@
     "paths": {
       "@components/*": ["./src/components/*"],
       "@content/*": ["./content/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@utils/*": ["./src/utils/*"],
+      "@communityNav": ["./content/community/navigation.yml"],
+      "@tutorialNav": ["./content/tutorial/navigation.yml"]
     }
   },
   "include": ["src/**/*"]

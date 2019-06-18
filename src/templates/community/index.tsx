@@ -1,8 +1,7 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import { require } from "path"
 
-const NavigationYml = require("@content/community/navigation.yml")
+import NavigationYml from "@communityNav"
 
 import Layout from "@components/Layout"
 import { processMarkdownHTML } from "@utils/processMarkdownHTML"
