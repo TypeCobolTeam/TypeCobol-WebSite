@@ -11,6 +11,7 @@
     "build": "gatsby build",
     "clean": "gatsby clean",
     "develop": "gatsby develop",
+    "deploy": "yarn clean && yarn test && yarn clean && yarn build",
     "format": "prettier --parser typescript --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.ts*\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
