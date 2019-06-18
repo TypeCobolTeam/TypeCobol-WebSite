@@ -1,0 +1,18 @@
+[build]
+  publish = "public/"
+  command = "yarn deploy"
+
+# Production context: all deploys from the Production branch set in your site's 
+# deploy contexts will inherit these settings.
+[context.production]
+  environment = { NODE_ENV = "production", NODE_VERSION = "10" }
+
+# Deploy Preview context: all deploys resulting from a pull/merge request will 
+# inherit these settings.
+[context.deploy-preview]
+  environment = { NODE_ENV = "development", NODE_VERSION = "10" }
+
+# Branch Deploy context: all deploys that are not from a pull/merge request or 
+# from the Production branch will inherit these settings.
+[context.branch-deploy]
+  environment = { NODE_ENV = "development", NODE_VERSION = "10" }
