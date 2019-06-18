@@ -1,19 +1,19 @@
-const { resolve } = require("path");
+const { resolve } = require("path")
 
 const onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
-        "@components": resolve(__dirname, "../src/components"),
-        "@utils": resolve(__dirname, "../src/utils"),
-        "@content": resolve(__dirname, "../content")
+        "@components": resolve(process.cwd(), "src/components"),
+        "@utils": resolve(process.cwd(), "src/utils"),
+        "@content": resolve(process.cwd(), "content"),
       },
       modules: [
-        resolve(__dirname, "../src"),
-        resolve(__dirname, "../node_modules")
-      ]
-    }
-  });
-};
+        resolve(process.cwd(), "src"),
+        resolve(process.cwd(), "node_modules"),
+      ],
+    },
+  })
+}
 
-module.exports = onCreateWebpackConfig;
+module.exports = onCreateWebpackConfig
