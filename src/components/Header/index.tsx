@@ -1,26 +1,25 @@
-import * as React from "react";
-
-import HelmetInit from "../Helmet";
+import * as React from "react"
+import { Link } from "gatsby"
 
 // @ts-ignore ignore import errors because of importing a yaml file
-import NavbarYml from "@content/navbar.yml";
+import NavbarYml from "@content/navbar.yml"
 
-import "./index.less";
+import HelmetInit from "../Helmet"
+
+import { Layout, Menu, Typography, Icon } from "antd"
+const Head = Layout.Header
+
+import { Color } from "csstype"
+
+import "./index.less"
 
 export interface NavElement {
-  title: string;
-  href: string;
-  color?: Color;
+  title: string
+  href: string
+  color?: Color
 }
 
-import { Layout, Menu, Typography, Icon } from "antd";
-import { Color } from "csstype";
-import { Link } from "gatsby";
-const Head = Layout.Header;
-const { Title } = Typography;
-
 class Header extends React.Component<{}, {}> {
-  state = { location: "" };
   public render() {
     return (
       <>
@@ -30,10 +29,10 @@ class Header extends React.Component<{}, {}> {
             <Menu.Item
               className="tc-logo"
               style={{
-                fontSize: 30,
                 color: "white",
+                fontSize: 30,
                 textDecoration: "underline",
-                textDecorationColor: "#1899ff"
+                textDecorationColor: "#1899ff",
               }}
             >
               <b>TypeCobol</b>
@@ -47,7 +46,7 @@ class Header extends React.Component<{}, {}> {
                   <a className="tc-menu-item" href={element.href}>
                     {element.title}
                   </a>
-                );
+                )
               } else {
                 return (
                   <>
@@ -60,19 +59,26 @@ class Header extends React.Component<{}, {}> {
                       {element.title}
                     </Link>
                   </>
-                );
+                )
               }
             })}
             <Menu.Item style={{ float: "right" }}>
               <a href="//github.com">
-                <Icon type="github" style={{ fontSize: 30, lineHeight: "64px", verticalAlign: "middle" }} />
+                <Icon
+                  type="github"
+                  style={{
+                    fontSize: 30,
+                    lineHeight: "64px",
+                    verticalAlign: "middle",
+                  }}
+                />
               </a>
             </Menu.Item>
           </Menu>
         </Head>
       </>
-    );
+    )
   }
 }
 
-export default Header;
+export default Header

@@ -1,21 +1,21 @@
-import * as React from "react";
-import Footer from "@components/Footer";
-import HelmetInit from "@components/Helmet";
-import Header from "@components/Header";
+import * as React from "react"
 
-import { Layout, ConfigProvider } from "antd";
-const { Content } = Layout;
+import { Layout, ConfigProvider } from "antd"
+const { Content } = Layout
 
-import SideNavigation, { Navigation } from "@components/SideNavigation";
+import Footer from "@components/Footer"
+import HelmetInit from "@components/Helmet"
+import Header from "@components/Header"
+import SideNavigation, { Navigation } from "@components/SideNavigation"
 
-interface LayoutProps {
-  showHeader?: boolean;
-  showFooter?: boolean;
-  sideNavigation?: any;
-  customContentLayout?: boolean;
+interface CLayoutProps {
+  showHeader?: boolean
+  showFooter?: boolean
+  sideNavigation?: any
+  customContentLayout?: boolean
 }
 
-class LayoutTpl extends React.Component<LayoutProps, {}> {
+class CLayout extends React.Component<CLayoutProps, {}> {
   public render() {
     return (
       <>
@@ -32,14 +32,14 @@ class LayoutTpl extends React.Component<LayoutProps, {}> {
               ) : (
                 <Content
                   style={{
-                    margin: "24px 16px 0"
+                    margin: "24px 16px 0",
                   }}
                 >
                   <div
                     style={{
                       background: "#fff",
+                      minHeight: "calc(100vh - 157px)",
                       padding: 24,
-                      minHeight: "calc(100vh - 157px)"
                     }}
                   >
                     {this.props.children}
@@ -51,8 +51,8 @@ class LayoutTpl extends React.Component<LayoutProps, {}> {
           </Layout>
         </ConfigProvider>
       </>
-    );
+    )
   }
 }
 
-export default LayoutTpl;
+export default CLayout

@@ -1,15 +1,16 @@
-import * as React from "react";
-import { graphql } from "gatsby";
+import { processMarkdownHTML } from "@utils/processMarkdownHTML"
+import { graphql } from "gatsby"
+import * as React from "react"
 
 interface PageProps {
   data: {
     markdownRemark: {
       frontmatter: {
-        title: string;
-      };
-      html: string;
-    };
-  };
+        title: string
+      }
+      html: string
+    }
+  }
 }
 
 export const pageQuery = graphql`
@@ -21,23 +22,21 @@ export const pageQuery = graphql`
       html
     }
   }
-`;
+`
 
 class SingleTemplate extends React.Component<PageProps, {}> {
-  readonly hello = `Hello`;
+  readonly hello = `Hello`
   public render() {
-    const { html, frontmatter } = this.props.data.markdownRemark;
-    const { title } = frontmatter;
+    const { html, frontmatter } = this.props.data.markdownRemark
+    const { title } = frontmatter
     return (
-      <Layout>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: processMarkdownHTML(html)
-          }}
-        />
-      </Layout>
-    );
+      <div
+        dangerouslySetInnerHTML={{
+          __html: processMarkdownHTML(html),
+        }}
+      />
+    )
   }
 }
 
-export default SingleTemplate;
+export default SingleTemplate

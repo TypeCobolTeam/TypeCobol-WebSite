@@ -1,73 +1,27 @@
-import * as React from "react";
-import { Link } from "gatsby";
-import { Color } from "csstype";
+import * as React from "react"
+import { Link } from "gatsby"
+import { Color } from "csstype"
 
-import { Layout, Menu, Icon, Divider } from "antd";
-const { SubMenu, Item } = Menu;
-const { Sider } = Layout;
+import { Layout, Menu, Icon, Divider } from "antd"
+const { Sider } = Layout
 
 interface PageProps {
-  navigation?: Navigation[];
+  navigation?: Navigation[]
 }
 
 export interface Navigation {
-  title: string;
-  color?: Color;
-  iconColor?: Color;
-  textColor?: Color;
-  link?: string;
-  icon?: string;
-  divider?: string;
+  title: string
+  color?: Color
+  iconColor?: Color
+  textColor?: Color
+  link?: string
+  icon?: string
+  divider?: string
 }
 
-export default class SideNavigation extends React.Component<PageProps, {}> {
-  public subItemRenderer(item: Navigation, index: number) {
-    const style: React.CSSProperties = item.color ? { color: item.color } : {};
-    if (item.divider) {
-      let marginTop = index === 0 ? "" : "32px";
-      return (
-        <Divider
-          orientation="left"
-          style={{
-            fontSize: 14,
-            textTransform: "uppercase",
-            marginTop: marginTop
-          }}
-        >
-          {item.divider}
-        </Divider>
-      );
-    } else {
-      let left = item.icon ? 24 : 48;
-      item.link = item.link || "/";
-      return (
-        <Link
-          key={item.link}
-          to={item.link}
-          className="tc-menu-item"
-          activeClassName="tc-menu-item-selected"
-          partiallyActive={true}
-          role="menuitem"
-          style={{ paddingLeft: left }}
-        >
-          {item.icon && (
-            <Icon
-              type={item.icon}
-              style={{ color: item.iconColor || item.color }}
-            />
-          )}
-          <span
-            className="nav-text"
-            style={{ color: item.textColor || item.color }}
-          >
-            {item.title}
-          </span>
-        </Link>
-      );
-    }
-  }
+class SideNavigation extends React.Component<PageProps, {}> {
   public render() {
-    const navigation = this.props.navigation || [];
+    const navigation = this.props.navigation || []
     return (
       <>
         <Sider
@@ -82,6 +36,52 @@ export default class SideNavigation extends React.Component<PageProps, {}> {
           </Menu>
         </Sider>
       </>
-    );
+    )
+  }
+  private subItemRenderer(item: Navigation, index: number) {
+    const style: React.CSSProperties = item.color ? { color: item.color } : {}
+    if (item.divider) {
+      return (
+        <Divider
+          orientation="left"
+          style={{
+            fontSize: 14,
+            marginTop: index === 0 ? "" : "32px",
+            textTransform: "uppercase",
+          }}
+        >
+          {item.divider}
+        </Divider>
+      )
+    } else if (item.link) {
+      return (
+        <Link
+          key={item.link}
+          to={item.link}
+          className="tc-menu-item"
+          activeClassName="tc-menu-item-selected"
+          partiallyActive={true}
+          role="menuitem"
+          style={{ paddingLeft: item.icon ? 24 : 48 }}
+        >
+          {item.icon && (
+            <Icon
+              type={item.icon}
+              style={{ color: item.iconColor || item.color }}
+            />
+          )}
+          <span
+            className="nav-text"
+            style={{ color: item.textColor || item.color }}
+          >
+            {item.title}
+          </span>
+        </Link>
+      )
+    } else {
+      return <></>
+    }
   }
 }
+
+export default SideNavigation

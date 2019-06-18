@@ -1,7 +1,7 @@
-import * as React from "react";
-import Helmet from "react-helmet";
+import * as React from "react"
+import Helmet from "react-helmet"
 
-class HelmetInit extends React.Component<any, any> {
+class CHelmet extends React.Component<{}, {}> {
   public render() {
     return (
       <Helmet
@@ -14,8 +14,8 @@ class HelmetInit extends React.Component<any, any> {
         <meta name="description" content="TypeCobol's official website" />
         <meta property="og:type" content="website" />
       </Helmet>
-    );
+    )
   }
 }
 
-export default HelmetInit;
+export default CHelmet
