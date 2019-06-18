@@ -24,7 +24,7 @@ const createPage = async ({ graphql, actions }) => {
     `
   );
 
-  // select templates according to slug (=path) genrated @ /gatsby/onCreateNode.ts
+  // select templates according to slug (=path) generated @ /gatsby/onCreateNode.ts
   const selectTemplate = slug => {
     if (slug.includes("community/")) {
       return resolve(`src/templates/community/index.tsx`);
@@ -61,7 +61,24 @@ const createPage = async ({ graphql, actions }) => {
       toPath: slug
     });
 
-    // For debug: console.log(`\n`, `Created page ${slug}`);
+    // add redirections for index pages
+    if (slug.includes("index")) {
+      let redirect_from = slug.replace("index.html", "");
+      createRedirect({
+        fromPath: redirect_from,
+        isPermanent: true,
+        redirectInBrowser: true,
+        toPath: slug
+      });
+
+      redirect_from = redirect_from.replace(/\/$/, "");
+      createRedirect({
+        fromPath: redirect_from,
+        isPermanent: true,
+        redirectInBrowser: true,
+        toPath: slug
+      });
+    }
   });
 
   return;

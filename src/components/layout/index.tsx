@@ -1,52 +1,58 @@
-import * as React from "react";
-import Helmet from "react-helmet";
+import * as React from "react"
 
-// import font-awesome
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
-library.add(fab, faCheckSquare, faCoffee);
+import { Layout, ConfigProvider } from "antd"
+const { Content } = Layout
 
-import "../../scss/index.scss";
-import Header from "../Header";
-import Foot from "../Footer";
+import Footer from "@components/Footer"
+import HelmetInit from "@components/Helmet"
+import Header from "@components/Header"
+import SideNavigation, { Navigation } from "@components/SideNavigation"
 
-class Layout extends React.Component<any, any> {
-  constructor(props: any) {
-    super(props);
-  }
+interface CLayoutProps {
+  showHeader?: boolean
+  showFooter?: boolean
+  sideNavigation?: any
+  customContentLayout?: boolean
+}
 
+class CLayout extends React.Component<CLayoutProps, {}> {
   public render() {
-    if (!this.props.isHomePage) {
-      return (
-        <div>
-          <Helmet>
-            <title>TypeCobol</title>
-            <meta
-              name="viewport"
-              content="width=device-width, initial-scale=1"
-            />
-          </Helmet>
-          <Header />
-          {this.props.children}
-          <Foot />
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <Helmet>
-            <title>TypeCobol</title>
-            <meta
-              name="viewport"
-              content="width=device-width, initial-scale=1"
-            />
-          </Helmet>
-          {this.props.children}
-        </div>
-      );
-    }
+    return (
+      <>
+        <HelmetInit />
+        <ConfigProvider prefixCls="tc">
+          <Layout>
+            {this.props.showHeader && <Header />}
+            <Layout style={{ flexDirection: "row" }}>
+              {this.props.sideNavigation && (
+                <SideNavigation navigation={this.props.sideNavigation} />
+              )}
+              {this.props.customContentLayout ? (
+                <>{this.props.children}</>
+              ) : (
+                <Content
+                  style={{
+                    margin: "24px 16px 0",
+                  }}
+                >
+                  <div
+                    style={{
+                      background: "#fff",
+                      minHeight: "calc(100vh - 157px)",
+                      padding: 24,
+                    }}
+                  >
+                    {this.props.children}
+                  </div>
+                </Content>
+              )}
+            </Layout>
+            {this.props.showFooter && <Footer />}
+          </Layout>
+        </ConfigProvider>
+      </>
+    )
   }
 }
 
-export default Layout;
+export default CLayout

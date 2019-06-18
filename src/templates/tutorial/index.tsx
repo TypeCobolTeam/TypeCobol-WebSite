@@ -1,39 +1,47 @@
-import * as React from "react";
-import { graphql } from "gatsby";
+import * as React from "react"
+import { graphql } from "gatsby"
 
-interface pageProps {
+// @ts-ignore disable tslint warning about yml module not found
+import NavigationYml from "@content/Tutorial/navigation.yml"
+import Layout from "@components/Layout"
+import { processMarkdownHTML } from "@utils/processMarkdownHTML"
+
+interface PageProps {
   data: {
-    site: {
-      siteMetadata: {
-        title: string;
-      };
-    };
-  };
+    markdownRemark: {
+      frontmatter: {
+        title: string
+      }
+      html: string
+    }
+  }
 }
 
 export const pageQuery = graphql`
-  query TutorialMarkdown {
-    site {
-      siteMetadata {
+  query TutorialTplMarkdown($id: String!) {
+    markdownRemark(id: { eq: $id }) {
+      frontmatter {
         title
       }
+      html
     }
   }
-`;
+`
 
-class TutorialTemplate extends React.Component<pageProps, {}> {
-  readonly hello = `Hello`;
+class TutorialTpl extends React.Component<PageProps, {}> {
   public render() {
-    const { title } = this.props.data.site.siteMetadata;
+    const { html, frontmatter } = this.props.data.markdownRemark
+    const { title } = frontmatter
     return (
-      <div>
-        <h1>{this.hello} TypeScript world!</h1>
-        <p>
-          This site is named <strong>{title}</strong>
-        </p>
-      </div>
-    );
+      <Layout showFooter showHeader sideNavigation={NavigationYml}>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: processMarkdownHTML(html),
+          }}
+        />
+      </Layout>
+    )
   }
 }
 
-export default TutorialTemplate;
+export default TutorialTpl
