@@ -1,12 +1,26 @@
+const { join } = require("path");
+const { readFileSync } = require("fs");
+
+const lessToJs = require("less-vars-to-js");
+const themeVariables = lessToJs(
+  readFileSync(join(__dirname, "./src/style/theme.less"), "utf8")
+);
+
 module.exports = {
   siteMetadata: {
     title: `TypeCobol`,
-    desc: `An Incremental Cobol parser for IBM Enterprise Cobol 5.1 for zOS syntax. <br> TypeCobol is also an extension of Cobol 85 language which can then be converted to Cobol85.`
+    desc: `An Incremental Cobol parser for IBM Enterprise Cobol 5.1 zOS syntax. <br />TypeCobol is also an extension of Cobol 85 language which can then be converted to Cobol85.`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
-    `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-less`,
+      options: {
+        javascriptEnabled: true,
+        modifyVars: themeVariables
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
