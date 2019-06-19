@@ -1,6 +1,5 @@
 import * as React from "react"
 import { Link } from "gatsby"
-import { Color } from "csstype"
 
 import { Layout, Menu, Icon, Divider } from "antd"
 const { Sider } = Layout
@@ -11,9 +10,9 @@ interface PageProps {
 
 export interface Navigation {
   title: string
-  color?: Color
-  iconColor?: Color
-  textColor?: Color
+  color?: any
+  iconColor?: any
+  textColor?: any
   link?: string
   icon?: string
   divider?: string

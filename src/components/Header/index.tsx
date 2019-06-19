@@ -6,12 +6,11 @@ import NavbarYml from "@content/navbar.yml"
 
 import HelmetInit from "@components/Helmet"
 
+// @ts-ignore import error of importing a png
 import logo from "@content/images/620.png"
 
 import { Layout, Menu, Typography, Icon } from "antd"
 const Head = Layout.Header
-
-import { Color } from "csstype"
 
 import "./index.less"
 import { Location } from "@reach/router"
@@ -19,7 +18,7 @@ import { Location } from "@reach/router"
 export interface NavElement {
   label: string
   href: string
-  color?: Color
+  color?: any
 }
 
 class Header extends React.Component<{}, {}> {

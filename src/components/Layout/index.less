@@ -1,0 +1,26 @@
+.tc-breadcrumb-wrapper {
+  margin-top: 10px;
+  * {
+    font-size: 14px !important;
+  }
+  a,
+  span {
+    color: rgba(0, 0, 0, 0.45) !important;
+    -webkit-transition: color 0.3s !important;
+    transition: color 0.3s !important;
+    margin-right: 8px;
+  }
+  a:hover {
+    color: #40a9ff !important;
+  }
+  &:first-of-type::before {
+    content: "\01F3E0";
+    margin-right: 8px;
+  }
+  &:first-of-type a {
+    display: none;
+  }
+  &:last-of-type span {
+    display: none;
+  }
+}

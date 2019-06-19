@@ -8,6 +8,7 @@ const themeVariables = lessToJs(
 
 module.exports = {
   siteMetadata: {
+    siteUrl: `https://typecobol.netlify.com`,
     title: `TypeCobol`,
     desc: `An Incremental Cobol parser for IBM Enterprise Cobol 5.1 zOS syntax. <br />TypeCobol is also an extension of Cobol 85 language which can then be converted to Cobol85.`,
   },
@@ -31,5 +32,18 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-redirect-from`,
     `gatsby-plugin-meta-redirect`,
+    {
+      resolve: `gatsby-plugin-breadcrumb`,
+      options: {
+        defaultCrumb: {
+          location: {
+            state: { crumbClicked: false },
+            pathname: "/",
+          },
+          crumbLabel: "",
+          crumbSeparator: " / ",
+        },
+      },
+    },
   ],
 }

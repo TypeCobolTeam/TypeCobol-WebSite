@@ -17,7 +17,14 @@
     "quotemark": [true, "double", "jsx-double"],
     "no-implicit-dependencies": [
       true,
-      ["@content", "@components", "@utils", "@communityNav", "@tutorialNav"]
+      [
+        "@content",
+        "@components",
+        "@utils",
+        "@communityNav",
+        "@tutorialNav",
+        "@images"
+      ]
     ],
     "jsx-boolean-value": false
   },

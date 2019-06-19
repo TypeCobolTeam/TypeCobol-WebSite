@@ -7,6 +7,7 @@ const onCreateWebpackConfig = ({ actions }) => {
         "@components": resolve(process.cwd(), "src/components"),
         "@utils": resolve(process.cwd(), "src/utils"),
         "@content": resolve(process.cwd(), "content"),
+        "@images": resolve(process.cwd(), "content/images"),
         "@communityNav": resolve(
           process.cwd(),
           "content/community/navigation.yml"
