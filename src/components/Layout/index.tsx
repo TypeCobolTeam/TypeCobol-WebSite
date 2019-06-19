@@ -1,18 +1,18 @@
 import * as React from "react"
 
-import { Layout, ConfigProvider, Breadcrumb } from "antd"
-const { Content } = Layout
+import { Layout, ConfigProvider } from "antd"
 
 import Footer from "@components/Footer"
 import HelmetInit from "@components/Helmet"
 import Header from "@components/Header"
-import SideNavigation, { Navigation } from "@components/SideNavigation"
+import SideNavigation from "@components/SideNavigation"
 import { WindowLocation } from "@reach/router"
+import "./index.less"
 
 // @ts-ignore
 import { Breadcrumb as GBreadcrumb } from "gatsby-plugin-breadcrumb"
 
-import "./index.less"
+const { Content } = Layout
 
 interface CLayoutProps {
   showHeader?: boolean

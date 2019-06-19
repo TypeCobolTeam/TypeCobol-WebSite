@@ -4,6 +4,7 @@ import * as React from "react"
 // import logoEI from "@content/images/EI.png";
 
 import { Layout } from "antd"
+
 const { Footer } = Layout
 
 class CFooter extends React.Component<{}, {}> {

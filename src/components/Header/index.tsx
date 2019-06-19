@@ -9,11 +9,12 @@ import HelmetInit from "@components/Helmet"
 // @ts-ignore import error of importing a png
 import logo from "@content/images/620.png"
 
-import { Layout, Menu, Typography, Icon } from "antd"
-const Head = Layout.Header
+import { Layout, Menu } from "antd"
 
 import "./index.less"
 import { Location } from "@reach/router"
+
+const Head = Layout.Header
 
 export interface NavElement {
   label: string
@@ -22,6 +23,13 @@ export interface NavElement {
 }
 
 class Header extends React.Component<{}, {}> {
+  static activeLink(href: string, actualPath: string) {
+    if (href === "/") {
+      return href === actualPath
+    }
+    return actualPath.includes(href)
+  }
+
   public render() {
     return (
       <>
@@ -79,13 +87,6 @@ class Header extends React.Component<{}, {}> {
         </Head>
       </>
     )
-  }
-  private activeLink(href: string, actualPath: string) {
-    if (href === "/") {
-      return href === actualPath
-    } else {
-      return actualPath.includes(href)
-    }
   }
 }
 
