@@ -9,14 +9,14 @@ Run `npm install` in a dev or production environment to install packages require
 ## Usage
 
 ```bash
-# Run in localhost in dev-mode
-npm run develop
+# Run local in dev-mode
+yarn develop
 # Build
-npm run build
+yarn build
 # Format (Prettier)
-npm run format
+yarn format
 # Run tests [WIP]
-npm run test
+yarn test
 ```
 
 ## Testing
