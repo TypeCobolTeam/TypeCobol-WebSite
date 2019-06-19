@@ -1,6 +1,8 @@
 import { processMarkdownHTML } from "@utils/processMarkdownHTML"
 import { graphql } from "gatsby"
 import * as React from "react"
+import Layout from "@components/Layout"
+import { WindowLocation } from "@reach/router"
 
 interface PageProps {
   data: {
@@ -11,6 +13,7 @@ interface PageProps {
       html: string
     }
   }
+  location: WindowLocation
 }
 
 export const pageQuery = graphql`
@@ -30,11 +33,13 @@ class SingleTemplate extends React.Component<PageProps, {}> {
     const { html, frontmatter } = this.props.data.markdownRemark
     const { title } = frontmatter
     return (
-      <div
-        dangerouslySetInnerHTML={{
-          __html: processMarkdownHTML(html),
-        }}
-      />
+      <Layout Breadcrumb={{ location: this.props.location, label: title }}>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: processMarkdownHTML(html),
+          }}
+        />
+      </Layout>
     )
   }
 }
