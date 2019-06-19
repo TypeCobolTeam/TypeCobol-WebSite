@@ -18,7 +18,8 @@
     "no-implicit-dependencies": [
       true,
       ["@content", "@components", "@utils", "@communityNav", "@tutorialNav"]
-    ]
+    ],
+    "jsx-boolean-value": false
   },
   "rulesDirectory": []
 }

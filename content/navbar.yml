@@ -1,8 +1,8 @@
-- title: Home
+- label: Home
   href: /
-- title: Community
+- label: Community
   href: /community
-- title: Tutorial
+- label: Tutorial
   href: /tutorial
-- title: Docs
+- label: Docs
   href: //github.com

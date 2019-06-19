@@ -24,12 +24,7 @@ class SideNavigation extends React.Component<PageProps, {}> {
     const navigation = this.props.navigation || []
     return (
       <>
-        <Sider
-          width={200}
-          style={{ background: "#fff", margin: "24px 0 0 0" }}
-          breakpoint="lg"
-          collapsedWidth="0"
-        >
+        <Sider width={200} breakpoint="lg" collapsedWidth="0">
           <div className="logo" />
           <Menu mode="inline" style={{ height: "100%", borderRight: 0 }}>
             {navigation.map(this.subItemRenderer.bind(this))}

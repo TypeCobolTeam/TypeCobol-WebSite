@@ -1,6 +1,7 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 
+// @ts-ignore
 import NavigationYml from "@tutorialNav"
 
 import Layout from "@components/Layout"
@@ -34,6 +35,7 @@ class TutorialTpl extends React.Component<PageProps, {}> {
     const { title } = frontmatter
     return (
       <Layout showFooter showHeader sideNavigation={NavigationYml}>
+        <h1>{title}</h1>
         <div
           dangerouslySetInnerHTML={{
             __html: processMarkdownHTML(html),

@@ -23,28 +23,32 @@ class CLayout extends React.Component<CLayoutProps, {}> {
         <ConfigProvider prefixCls="tc">
           <Layout>
             {this.props.showHeader && <Header />}
-            <Layout style={{ flexDirection: "row" }}>
+            <Layout>
               {this.props.sideNavigation && (
                 <SideNavigation navigation={this.props.sideNavigation} />
               )}
               {this.props.customContentLayout ? (
                 <>{this.props.children}</>
               ) : (
-                <Content
-                  style={{
-                    margin: "24px 16px 0",
-                  }}
-                >
-                  <div
+                <Layout style={{ padding: "0 24px 0 24px" }}>
+                  <Content
                     style={{
                       background: "#fff",
-                      minHeight: "calc(100vh - 157px)",
+                      margin: 0,
+                      minHeight: 280,
                       padding: 24,
                     }}
                   >
-                    {this.props.children}
-                  </div>
-                </Content>
+                    <div
+                      style={{
+                        minHeight: "calc(100vh - 234px)",
+                        padding: 24,
+                      }}
+                    >
+                      {this.props.children}
+                    </div>
+                  </Content>
+                </Layout>
               )}
             </Layout>
             {this.props.showFooter && <Footer />}
