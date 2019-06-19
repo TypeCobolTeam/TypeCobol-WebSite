@@ -1,4 +1,4 @@
-import { processMarkdownHTML } from "@utils/processMarkdownHTML"
+import processMarkdownHTML from "@utils/processMarkdownHTML"
 import { graphql } from "gatsby"
 import * as React from "react"
 import Layout from "@components/Layout"
@@ -28,7 +28,6 @@ export const pageQuery = graphql`
 `
 
 class SingleTemplate extends React.Component<PageProps, {}> {
-  readonly hello = `Hello`
   public render() {
     const { html, frontmatter } = this.props.data.markdownRemark
     const { title } = frontmatter

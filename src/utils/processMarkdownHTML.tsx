@@ -16,4 +16,4 @@ const processHTML = (html: string) => {
   return newHTML
 }
 
-export { processHTML as processMarkdownHTML }
+export default processHTML

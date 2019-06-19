@@ -1,7 +1,8 @@
-const { resolve } = require("path");
+const { resolve } = require("path")
 
 const createPage = async ({ graphql, actions }) => {
-  const { createPage, createRedirect } = actions;
+  // eslint-disable-next-line no-shadow
+  const { createPage, createRedirect } = actions
 
   // query all content from /content/
   const allMarkdownRemark = await graphql(
@@ -22,66 +23,65 @@ const createPage = async ({ graphql, actions }) => {
         }
       }
     `
-  );
+  )
 
   // select templates according to slug (=path) generated @ /gatsby/onCreateNode.ts
   const selectTemplate = slug => {
     if (slug.includes("community/")) {
-      return resolve(`src/templates/community/index.tsx`);
-    } else if (slug.includes("tutorial/")) {
-      return resolve(`src/templates/tutorial/index.tsx`);
+      return resolve(`src/templates/community/index.tsx`)
     }
-    return resolve(`src/templates/single/index.tsx`);
-  };
+    if (slug.includes("tutorial/")) {
+      return resolve(`src/templates/tutorial/index.tsx`)
+    }
+    return resolve(`src/templates/single/index.tsx`)
+  }
 
   allMarkdownRemark.data.allMarkdownRemark.edges.forEach(edge => {
-    const { slug } = edge.node.fields;
-    const { id } = edge.node;
-    const { disablePage } = edge.node.frontmatter;
+    const { slug } = edge.node.fields
+    const { id } = edge.node
+    const { disablePage } = edge.node.frontmatter
 
-    if (!slug || disablePage) return;
+    if (!slug || disablePage) return
 
-    const template = selectTemplate(slug);
+    const template = selectTemplate(slug)
 
     createPage({
       path: slug,
       component: template,
       context: {
-        slug: slug,
-        id: id
-      }
-    });
+        slug,
+        id,
+      },
+    })
 
     // Redirect from /category/page to /category/page.html
-    let redirect_from = slug.replace(".html", "");
+    let redirectFrom = slug.replace(".html", "")
     createRedirect({
-      fromPath: redirect_from,
+      fromPath: redirectFrom,
       isPermanent: true,
       redirectInBrowser: true,
-      toPath: slug
-    });
+      toPath: slug,
+    })
 
     // add redirections for index pages
     if (slug.includes("index")) {
-      let redirect_from = slug.replace("index.html", "");
+      redirectFrom = slug.replace("index.html", "")
       createRedirect({
-        fromPath: redirect_from,
+        fromPath: redirectFrom,
         isPermanent: true,
         redirectInBrowser: true,
-        toPath: slug
-      });
+        toPath: slug,
+      })
 
-      redirect_from = redirect_from.replace(/\/$/, "");
+      redirectFrom = redirectFrom.replace(/\/$/, "")
       createRedirect({
-        fromPath: redirect_from,
+        fromPath: redirectFrom,
         isPermanent: true,
         redirectInBrowser: true,
-        toPath: slug
-      });
+        toPath: slug,
+      })
     }
-  });
+  })
+}
 
-  return;
-};
-
-module.exports = createPage;
+module.exports = createPage

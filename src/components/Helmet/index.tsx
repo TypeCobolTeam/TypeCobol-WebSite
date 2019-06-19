@@ -5,7 +5,7 @@ class CHelmet extends React.Component<{}, {}> {
   public render() {
     return (
       <Helmet
-        encodeSpecialCharacters={true}
+        encodeSpecialCharacters
         defaultTitle="TypeCobol"
         titleTemplate="TypeCobolTeam - %s"
       >

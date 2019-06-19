@@ -1,13 +1,12 @@
 const onCreateBabelConfig = ({ actions }) => {
-  const { setBabelPlugin } = actions;
+  const { setBabelPlugin } = actions
   setBabelPlugin({
     name: `babel-plugin-import`,
     options: {
       libraryName: "antd",
-      style: true
-    }
-  });
-  return;
-};
+      style: true,
+    },
+  })
+}
 
-module.exports = onCreateBabelConfig;
+module.exports = onCreateBabelConfig

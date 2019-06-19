@@ -5,7 +5,7 @@ import { graphql } from "gatsby"
 import NavigationYml from "@communityNav"
 
 import Layout from "@components/Layout"
-import { processMarkdownHTML } from "@utils/processMarkdownHTML"
+import processMarkdownHTML from "@utils/processMarkdownHTML"
 import { WindowLocation } from "@reach/router"
 
 interface PageProps {
