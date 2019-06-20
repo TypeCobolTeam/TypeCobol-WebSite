@@ -2,7 +2,7 @@
 id: faster
 title: Where to get Support ?
 disablePage: true
-redirect_from:
+redirectFrom:
   - /support/
 ---
 

@@ -1,7 +1,7 @@
 ---
 id: first-tutorial
 title: This tutorial is great!
-redirect_from:
+redirectFrom:
   - /my-first-tutorial/
 ---
 

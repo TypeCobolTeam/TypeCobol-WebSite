@@ -14,7 +14,6 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-plugin-less`,
       options: {
@@ -30,8 +29,6 @@ module.exports = {
       },
     },
     `gatsby-transformer-remark`,
-    `gatsby-redirect-from`,
-    `gatsby-plugin-meta-redirect`,
     {
       resolve: `gatsby-plugin-breadcrumb`,
       options: {
@@ -45,5 +42,6 @@ module.exports = {
         },
       },
     },
+    `gatsby-plugin-meta-redirect`,
   ],
 }

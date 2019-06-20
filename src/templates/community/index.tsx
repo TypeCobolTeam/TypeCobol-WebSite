@@ -1,12 +1,11 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 
-// @ts-ignore
-import NavigationYml from "@communityNav"
-
 import Layout from "@components/Layout"
 import processMarkdownHTML from "@utils/processMarkdownHTML"
 import { WindowLocation } from "@reach/router"
+
+const NavigationYml = require("@community/navigation.yml")
 
 interface PageProps {
   data: {
@@ -44,6 +43,7 @@ class CommunityTpl extends React.Component<PageProps, {}> {
       >
         <h1>{title}</h1>
         <div
+          // eslint-disable-next-line
           dangerouslySetInnerHTML={{
             __html: processMarkdownHTML(html),
           }}

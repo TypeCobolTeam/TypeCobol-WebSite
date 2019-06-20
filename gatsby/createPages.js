@@ -17,6 +17,7 @@ const createPage = async ({ graphql, actions }) => {
               }
               frontmatter {
                 disablePage
+                redirectFrom
               }
             }
           }
@@ -38,8 +39,11 @@ const createPage = async ({ graphql, actions }) => {
 
   allMarkdownRemark.data.allMarkdownRemark.edges.forEach(edge => {
     const { slug } = edge.node.fields
-    const { id } = edge.node
-    const { disablePage } = edge.node.frontmatter
+    const { id, frontmatter } = edge.node
+    const { disablePage } = frontmatter
+
+    // avoir having two vars with same name
+    const redirectHereFrom = frontmatter.redirectFrom
 
     if (!slug || disablePage) return
 
@@ -79,6 +83,31 @@ const createPage = async ({ graphql, actions }) => {
         isPermanent: true,
         redirectInBrowser: true,
         toPath: slug,
+      })
+    }
+
+    // allow a redirect_form meta tag in pages
+    redirectFrom = redirectHereFrom
+    if (!redirectFrom) return
+    if (typeof redirectFrom === "string") {
+      createRedirect({
+        fromPath: redirectFrom,
+        toPath: slug,
+        isPermanent: true,
+        redirectInBrowser: true,
+      })
+    } else if (
+      typeof redirectFrom === "object" &&
+      redirectFrom !== null &&
+      redirectFrom !== ""
+    ) {
+      redirectFrom.forEach(from => {
+        createRedirect({
+          fromPath: from,
+          toPath: slug,
+          isPermanent: true,
+          redirectInBrowser: true,
+        })
       })
     }
   })

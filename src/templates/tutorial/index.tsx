@@ -1,12 +1,11 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 
-// @ts-ignore
-import NavigationYml from "@tutorialNav"
-
 import Layout from "@components/Layout"
 import processMarkdownHTML from "@utils/processMarkdownHTML"
 import { WindowLocation } from "@reach/router"
+
+const NavigationYml = require("@tutorial/navigation.yml")
 
 interface PageProps {
   data: {
@@ -44,6 +43,7 @@ class TutorialTpl extends React.Component<PageProps, {}> {
       >
         <h1>{title}</h1>
         <div
+          // eslint-disable-next-line
           dangerouslySetInnerHTML={{
             __html: processMarkdownHTML(html),
           }}

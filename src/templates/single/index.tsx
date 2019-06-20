@@ -34,6 +34,7 @@ class SingleTemplate extends React.Component<PageProps, {}> {
     return (
       <Layout Breadcrumb={{ location: this.props.location, label: title }}>
         <div
+          // eslint-disable-next-line
           dangerouslySetInnerHTML={{
             __html: processMarkdownHTML(html),
           }}

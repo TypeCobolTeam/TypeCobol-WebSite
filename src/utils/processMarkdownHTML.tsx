@@ -1,7 +1,4 @@
-// file not used at the moment
-
-// @ts-ignore
-import Replacements from "@content/HTMLReplacements.yml"
+const Replacements: ReplacementProp[] = require("@content/HTMLReplacements.yml")
 
 interface ReplacementProp {
   toReplace: string

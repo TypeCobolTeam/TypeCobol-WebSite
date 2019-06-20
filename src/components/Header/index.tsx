@@ -1,9 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
 
-// @ts-ignore ignore import errors because of importing a yaml file
-import NavbarYml from "@content/navbar.yml"
-
 import HelmetInit from "@components/Helmet"
 
 // @ts-ignore import error of importing a png
@@ -13,6 +10,8 @@ import { Layout, Menu } from "antd"
 
 import "./index.less"
 import { Location } from "@reach/router"
+
+const NavbarYml: NavElement[] = require("@content/navbar.yml")
 
 const Head = Layout.Header
 
