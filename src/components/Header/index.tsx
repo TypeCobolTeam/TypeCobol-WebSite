@@ -22,14 +22,14 @@ export interface NavElement {
   color?: any
 }
 
-class Header extends React.Component<{}, {}> {
-  static activeLink(href: string, actualPath: string) {
-    if (href === "/") {
-      return href === actualPath
-    }
-    return actualPath.includes(href)
+const activeLink = (href: string, actualPath: string) => {
+  if (href === "/") {
+    return href === actualPath
   }
+  return actualPath.includes(href)
+}
 
+class Header extends React.Component<{}, {}> {
   public render() {
     return (
       <>
@@ -71,7 +71,7 @@ class Header extends React.Component<{}, {}> {
                     return (
                       <Menu.Item
                         key={
-                          this.activeLink(element.href, props.location.pathname)
+                          activeLink(element.href, props.location.pathname)
                             ? "active"
                             : Math.random()
                         }
