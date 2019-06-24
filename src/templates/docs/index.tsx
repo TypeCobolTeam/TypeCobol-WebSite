@@ -5,7 +5,7 @@ import Layout from "@components/Layout"
 import processMarkdownHTML from "@utils/processMarkdownHTML"
 import { WindowLocation } from "@reach/router"
 
-const NavigationYml = require("@tutorial/navigation.yml")
+const NavigationYml = require("@docs/navigation.yml")
 
 interface PageProps {
   data: {
@@ -20,7 +20,7 @@ interface PageProps {
 }
 
 export const pageQuery = graphql`
-  query TutorialTplMarkdown($id: String!) {
+  query DocsTplMarkdown($id: String!) {
     markdownRemark(id: { eq: $id }) {
       frontmatter {
         title
@@ -30,7 +30,7 @@ export const pageQuery = graphql`
   }
 `
 
-class TutorialTpl extends React.Component<PageProps, {}> {
+class DocsTpl extends React.Component<PageProps, {}> {
   public render() {
     const { html, frontmatter } = this.props.data.markdownRemark
     const { title } = frontmatter
@@ -53,4 +53,4 @@ class TutorialTpl extends React.Component<PageProps, {}> {
   }
 }
 
-export default TutorialTpl
+export default DocsTpl

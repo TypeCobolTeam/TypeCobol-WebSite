@@ -33,7 +33,7 @@ class Header extends React.Component<{}, {}> {
     return (
       <>
         <HelmetInit />
-        <Head>
+        <Head style={{ zIndex: 500 }}>
           <div
             className="logo"
             style={{

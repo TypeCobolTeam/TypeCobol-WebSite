@@ -65,11 +65,31 @@ const subItemRenderer = (item: Navigation, index: number) => {
 class SideNavigation extends React.Component<PageProps, {}> {
   public render() {
     const navigation = this.props.navigation || []
+    const width: number = 300
     return (
       <>
-        <Sider width={200} breakpoint="lg" collapsedWidth="0">
-          <div className="logo" />
-          <Menu mode="inline" style={{ height: "100%", borderRight: 0 }}>
+        <Sider
+          width={width}
+          breakpoint="lg"
+          collapsedWidth="0"
+          style={{ height: "calc(100vh - 64px)" }}
+          className="hideScroll"
+        >
+          <Menu
+            mode="inline"
+            style={{
+              height: "100%",
+              width,
+              paddingTop: 70,
+              borderRight: 0,
+              overflowY: "auto",
+              overflowX: "hidden",
+              position: "fixed",
+              top: 0,
+              zIndex: 1,
+            }}
+            className="hideScroll"
+          >
             {navigation.map(subItemRenderer)}
           </Menu>
         </Sider>

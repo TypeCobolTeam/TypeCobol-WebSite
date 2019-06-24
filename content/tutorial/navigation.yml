@@ -1,9 +1,0 @@
-- title: Index!
-  icon: home
-  iconColor: purple
-  link: /tutorial/index
-- title: Second tutorial
-  color: red
-  link: /tutorial/second-tutorial
-- title: First tutorial
-  link: /tutorial/first-tutorial

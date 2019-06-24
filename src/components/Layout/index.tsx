@@ -9,7 +9,6 @@ import SideNavigation from "@components/SideNavigation"
 import { WindowLocation } from "@reach/router"
 import "./index.less"
 
-// @ts-ignore
 import { Breadcrumb as GBreadcrumb } from "gatsby-plugin-breadcrumb"
 
 const { Content } = Layout
@@ -37,39 +36,41 @@ class CLayout extends React.Component<CLayoutProps, {}> {
               {this.props.sideNavigation && (
                 <SideNavigation navigation={this.props.sideNavigation} />
               )}
-              {this.props.customContentLayout ? (
-                this.props.children
-              ) : (
-                <Layout style={{ padding: "0 24px 0 24px" }}>
-                  <div style={{ padding: "16px 24px" }}>
-                    <GBreadcrumb
-                      location={this.props.Breadcrumb.location}
-                      crumbLabel={this.props.Breadcrumb.label}
-                      crumbWrapperStyle={{ class: "tc-breadcrumb-wrapper" }}
-                      crumbSeparator="/"
-                    />
-                  </div>
-                  <Content
-                    style={{
-                      background: "#fff",
-                      margin: 0,
-                      minHeight: 280,
-                      padding: 24,
-                    }}
-                  >
-                    <div
+              <Layout>
+                {this.props.customContentLayout ? (
+                  this.props.children
+                ) : (
+                  <Layout style={{ padding: "0 24px 0 24px" }}>
+                    <div style={{ padding: "16px 24px" }}>
+                      <GBreadcrumb
+                        location={this.props.Breadcrumb.location}
+                        crumbLabel={this.props.Breadcrumb.label}
+                        crumbWrapperStyle={{ class: "tc-breadcrumb-wrapper" }}
+                        crumbSeparator="/"
+                      />
+                    </div>
+                    <Content
                       style={{
-                        minHeight: "calc(100vh - 234px)",
+                        background: "#fff",
+                        margin: 0,
+                        minHeight: 280,
                         padding: 24,
                       }}
                     >
-                      {this.props.children}
-                    </div>
-                  </Content>
-                </Layout>
-              )}
+                      <div
+                        style={{
+                          minHeight: "calc(100vh - 234px)",
+                          padding: 24,
+                        }}
+                      >
+                        {this.props.children}
+                      </div>
+                    </Content>
+                  </Layout>
+                )}
+                {this.props.showFooter && <Footer />}
+              </Layout>
             </Layout>
-            {this.props.showFooter && <Footer />}
           </Layout>
         </ConfigProvider>
       </>

@@ -1,12 +1,13 @@
-- divider: Main
+- divider: Contributions
+- title: Github, why and how ?
+  icon: github
+  link: /community/contribute
+- divider: Ask for help
 - title: Hello
-  default: true
   link: /community/support
   color: none
   icon: caret-up
-- divider: Not Main
-- title: Hello2
-  default: true
+- divider: Events
+- title: Next Events
   link: /community/index
-  color: red
-  icon: caret-down
+  icon: calendar

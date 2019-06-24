@@ -11,7 +11,7 @@
       "@content/*": ["content/*"],
       "@utils/*": ["src/utils/*"],
       "@community/*": ["content/community/*"],
-      "@tutorial/*": ["content/tutorial/*"]
+      "@docs/*": ["content/docs/*"]
     }
   },
   "include": ["./src/**/*"]

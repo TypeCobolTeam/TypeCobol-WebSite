@@ -1,6 +1,6 @@
 ---
 id: index
-title: Index of tutorials
+title: Docs
 ---
 
 # Markdown: Syntax

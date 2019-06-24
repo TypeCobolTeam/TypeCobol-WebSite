@@ -1,0 +1,44 @@
+@circle-button-size: 15px;
+@circle-button-space: 7px;
+@circle-button-margin: @circle-button-space + @circle-button-size;
+
+.codeWindow {
+  position: relative;
+  background: rgba(@layout-header-background, 0.9);
+  border-radius: 5px;
+  box-shadow: 0 0 5px 0px @layout-header-background;
+  padding: 1em;
+  .buttons {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    #close {
+      position: absolute;
+      background: #f15a6a;
+      height: @circle-button-size;
+      width: @circle-button-size;
+      border-radius: 100%;
+    }
+    #minimize {
+      position: absolute;
+      left: @circle-button-margin;
+      background: #f8c853;
+      height: @circle-button-size;
+      width: @circle-button-size;
+      border-radius: 100%;
+    }
+    #fullscreen {
+      position: absolute;
+      left: @circle-button-margin * 2;
+      background: #4be05d;
+      height: @circle-button-size;
+      width: @circle-button-size;
+      border-radius: 100%;
+    }
+  }
+  .content {
+    height: fit-content;
+    color: white;
+    position: relative;
+  }
+}

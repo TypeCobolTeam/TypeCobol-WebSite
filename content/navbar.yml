@@ -2,7 +2,7 @@
   href: /
 - label: Community
   href: /community
-- label: Tutorial
-  href: /tutorial
+#- label: Tutorial
+#  href: /tutorial
 - label: Docs
-  href: //github.com
+  href: /docs

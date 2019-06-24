@@ -31,8 +31,8 @@ const createPage = async ({ graphql, actions }) => {
     if (slug.includes("community/")) {
       return resolve(`src/templates/community/index.tsx`)
     }
-    if (slug.includes("tutorial/")) {
-      return resolve(`src/templates/tutorial/index.tsx`)
+    if (slug.includes("docs/")) {
+      return resolve(`src/templates/docs/index.tsx`)
     }
     return resolve(`src/templates/single/index.tsx`)
   }
