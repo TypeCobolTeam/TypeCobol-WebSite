@@ -1,5 +1,6 @@
 const { resolve } = require("path")
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
+const CleanCSSPlugin = require("less-plugin-clean-css")
 
 const onCreateWebpackConfig = ({ loaders, actions }) => {
   const jsLoader = loaders.js()
@@ -22,6 +23,30 @@ const onCreateWebpackConfig = ({ loaders, actions }) => {
           test: /\.tsx?$/,
           exclude: /node_modules/,
           use: [jsLoader, "ts-loader"],
+        },
+        {
+          test: /\.less$/,
+          use: [
+            {
+              loader: "style-loader",
+            },
+            {
+              loader: "css-loader", // translates CSS into CommonJS
+            },
+            {
+              loader: "less-loader", // compiles Less to CSS
+              options: {
+                plugins: [new CleanCSSPlugin({ advanced: true })],
+                modifyVars: {
+                  hack: `true; @import "${resolve(
+                    process.cwd(),
+                    "src/style/theme.less"
+                  )}";`,
+                },
+                javascriptEnabled: true,
+              },
+            },
+          ],
         },
       ],
     },

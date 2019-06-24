@@ -1,1 +1,1 @@
-import "src/style/global.less"
+import "antd/dist/antd.less"
