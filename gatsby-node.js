@@ -8,4 +8,7 @@ exports.resolvableExtensions = () => [
   ".jsx",
   ".yml",
   ".yaml",
+  ".png",
+  ".jpg",
+  ".svg",
 ]

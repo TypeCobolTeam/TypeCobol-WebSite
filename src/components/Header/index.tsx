@@ -1,16 +1,12 @@
 import * as React from "react"
 import { Link } from "gatsby"
 
-import HelmetInit from "@components/Helmet"
-
-// @ts-ignore import error of importing a png
-import logo from "@content/images/620.png"
-
 import { Layout, Menu } from "antd"
 
 import "./index.less"
 import { Location } from "@reach/router"
 
+const logo = require("@images/logo.svg")
 const NavbarYml: NavElement[] = require("@content/navbar.yml")
 
 const Head = Layout.Header
@@ -32,20 +28,18 @@ class Header extends React.Component<{}, {}> {
   public render() {
     return (
       <>
-        <HelmetInit />
         <Head style={{ zIndex: 500 }}>
           <div
             className="logo"
             style={{
               float: "left",
-              height: 31,
-              margin: "16px 10px 16px 10px",
+              height: "100%",
             }}
           >
             <img
               src={logo}
               alt=""
-              style={{ height: "100%", verticalAlign: "super" }}
+              style={{ height: "100%", maxHeight: 40, verticalAlign: "middle" }}
             />
           </div>
           <Location>

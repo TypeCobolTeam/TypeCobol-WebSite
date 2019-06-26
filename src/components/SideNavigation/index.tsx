@@ -40,7 +40,6 @@ const subItemRenderer = (item: Navigation, index: number) => {
         to={item.link}
         className="tc-menu-item"
         activeClassName="tc-menu-item-selected"
-        partiallyActive
         role="menuitem"
         style={{ paddingLeft: item.icon ? 24 : 48 }}
       >

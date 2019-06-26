@@ -32,7 +32,10 @@ class SingleTemplate extends React.Component<PageProps, {}> {
     const { html, frontmatter } = this.props.data.markdownRemark
     const { title } = frontmatter
     return (
-      <Layout Breadcrumb={{ location: this.props.location, label: title }}>
+      <Layout
+        customContentLayout
+        Breadcrumb={{ location: this.props.location, label: title }}
+      >
         <div
           // eslint-disable-next-line
           dangerouslySetInnerHTML={{

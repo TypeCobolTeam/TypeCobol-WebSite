@@ -1,13 +1,13 @@
 - divider: Contributions
 - title: Github, why and how ?
   icon: github
-  link: /community/contribute
+  link: /community/contribute.html
 - divider: Ask for help
 - title: Hello
-  link: /community/support
+  link: /community/support.html
   color: none
   icon: caret-up
 - divider: Events
 - title: Next Events
-  link: /community/index
+  link: /community
   icon: calendar

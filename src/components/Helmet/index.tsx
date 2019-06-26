@@ -8,12 +8,21 @@ class CHelmet extends React.Component<{}, {}> {
         encodeSpecialCharacters
         defaultTitle="TypeCobol"
         titleTemplate="TypeCobolTeam - %s"
-      >
-        <html lang="en" />
-        <body className="root" />
-        <meta name="description" content="TypeCobol's official website" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+        meta={[
+          {
+            name: "description",
+            content: "Official Website for TypeCobol",
+          },
+          {
+            name: "keywords",
+            content: "cobol, language, parser, ibm",
+          },
+          {
+            name: "og:type",
+            content: "website",
+          },
+        ]}
+      />
     )
   }
 }

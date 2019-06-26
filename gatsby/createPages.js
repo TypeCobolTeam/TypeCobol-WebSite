@@ -42,18 +42,20 @@ const createPage = async ({ graphql, actions }) => {
     const { id, frontmatter } = edge.node
     const { disablePage } = frontmatter
 
-    // avoir having two vars with same name
+    // avoid having two vars with same name
     const redirectHereFrom = frontmatter.redirectFrom
 
     if (!slug || disablePage) return
 
     const template = selectTemplate(slug)
 
+    const path = slug.replace(/[/\\]index.html/gi, "")
+
     createPage({
-      path: slug,
+      path,
       component: template,
       context: {
-        slug,
+        slug: path,
         id,
       },
     })
@@ -64,27 +66,8 @@ const createPage = async ({ graphql, actions }) => {
       fromPath: redirectFrom,
       isPermanent: true,
       redirectInBrowser: true,
-      toPath: slug,
+      toPath: path,
     })
-
-    // add redirections for index pages
-    if (slug.includes("index")) {
-      redirectFrom = slug.replace("index.html", "")
-      createRedirect({
-        fromPath: redirectFrom,
-        isPermanent: true,
-        redirectInBrowser: true,
-        toPath: slug,
-      })
-
-      redirectFrom = redirectFrom.replace(/\/$/, "")
-      createRedirect({
-        fromPath: redirectFrom,
-        isPermanent: true,
-        redirectInBrowser: true,
-        toPath: slug,
-      })
-    }
 
     // allow a redirect_form meta tag in pages
     redirectFrom = redirectHereFrom
@@ -92,7 +75,7 @@ const createPage = async ({ graphql, actions }) => {
     if (typeof redirectFrom === "string") {
       createRedirect({
         fromPath: redirectFrom,
-        toPath: slug,
+        toPath: path,
         isPermanent: true,
         redirectInBrowser: true,
       })
@@ -104,7 +87,7 @@ const createPage = async ({ graphql, actions }) => {
       redirectFrom.forEach(from => {
         createRedirect({
           fromPath: from,
-          toPath: slug,
+          toPath: path,
           isPermanent: true,
           redirectInBrowser: true,
         })

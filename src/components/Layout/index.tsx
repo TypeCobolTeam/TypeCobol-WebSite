@@ -32,7 +32,11 @@ class CLayout extends React.Component<CLayoutProps, {}> {
         <ConfigProvider prefixCls="tc">
           <Layout>
             {this.props.showHeader && <Header />}
-            <Layout>
+            <Layout
+              style={{
+                flexDirection: this.props.sideNavigation ? "row" : "column",
+              }}
+            >
               {this.props.sideNavigation && (
                 <SideNavigation navigation={this.props.sideNavigation} />
               )}
@@ -40,7 +44,7 @@ class CLayout extends React.Component<CLayoutProps, {}> {
                 {this.props.customContentLayout ? (
                   this.props.children
                 ) : (
-                  <Layout style={{ padding: "0 24px 0 24px" }}>
+                  <Layout style={{ padding: "0 24px 24px 24px" }}>
                     <div style={{ padding: "16px 24px" }}>
                       <GBreadcrumb
                         location={this.props.Breadcrumb.location}

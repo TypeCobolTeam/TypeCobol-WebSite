@@ -10,6 +10,7 @@
       "@components/*": ["src/components/*"],
       "@content/*": ["content/*"],
       "@utils/*": ["src/utils/*"],
+      "@images/*": ["content/images/*"],
       "@community/*": ["content/community/*"],
       "@docs/*": ["content/docs/*"]
     }
