@@ -13,7 +13,19 @@ module.exports = {
         name: "content",
       },
     },
-    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-codemirror`,
+            options: {
+              theme: "typecobol",
+            },
+          },
+        ],
+      },
+    },
     {
       resolve: `gatsby-plugin-breadcrumb`,
       options: {
