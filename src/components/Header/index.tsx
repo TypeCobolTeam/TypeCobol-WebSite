@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Link } from "gatsby"
 
-import { Layout, Menu } from "antd"
+import { Layout, Menu, Icon } from "antd"
 
 import "./index.less"
 import { Location } from "@reach/router"
@@ -78,6 +78,18 @@ class Header extends React.Component<{}, {}> {
                       </Menu.Item>
                     )
                   })}
+                  <Menu.Item
+                    key="github"
+                    style={{ float: "right", fontSize: 30, padding: 0 }}
+                  >
+                    <a
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      href="https://github.com/TypeCobolTeam/TypeCobol"
+                    >
+                      <Icon type="github" style={{ fontSize: 30 }} />
+                    </a>
+                  </Menu.Item>
                 </Menu>
               )
             }}
