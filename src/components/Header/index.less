@@ -3,7 +3,10 @@
   box-shadow: 0px -3px 0px @primary-color inset;
   background-color: transparent !important;
 }
-.tc-logo.tc-menu-item-selected {
-  box-shadow: none !important;
-  background-color: transparent !important;
+.tc-logo img {
+  transition: filter 0.3s;
+  cursor: pointer;
+  &:hover {
+    filter: invert(30%);
+  }
 }

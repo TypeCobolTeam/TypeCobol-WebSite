@@ -14,8 +14,6 @@ class SideNavigation extends React.Component<PageProps, {}> {
   public render() {
     const navigation: Navigations = this.props.navigation || []
     const width: number = 300
-    // eslint-disable-next-line
-    console.log(navigation)
     return (
       <>
         <Location>

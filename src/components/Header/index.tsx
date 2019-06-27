@@ -29,8 +29,9 @@ class Header extends React.Component<{}, {}> {
     return (
       <>
         <Head style={{ zIndex: 500 }}>
-          <div
-            className="logo"
+          <Link
+            to="/"
+            className="tc-logo"
             style={{
               float: "left",
               height: "100%",
@@ -39,9 +40,13 @@ class Header extends React.Component<{}, {}> {
             <img
               src={logo}
               alt=""
-              style={{ height: "100%", maxHeight: 40, verticalAlign: "middle" }}
+              style={{
+                height: "100%",
+                maxHeight: 40,
+                verticalAlign: "middle",
+              }}
             />
-          </div>
+          </Link>
           <Location>
             {props => {
               return (

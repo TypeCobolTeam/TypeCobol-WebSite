@@ -7,7 +7,7 @@ import { Navigation } from "./interfaces"
 const { SubMenu } = Menu
 
 const activeLink = (href: string, actualPath: string) => {
-  if (href === "/") {
+  if (href.endsWith("/")) {
     return href === actualPath
   }
   const result = actualPath.includes(href)
@@ -45,7 +45,7 @@ const ItemRenderer = (element: Navigation, index: number, pathname: string) => {
               : index
           }
           title={
-            <span>
+            <span style={{ fontWeight: 600 }}>
               {element.icon && <Icon type={element.icon} />}
               <span>{element.group}</span>
             </span>
@@ -92,7 +92,7 @@ const ItemRenderer = (element: Navigation, index: number, pathname: string) => {
         <Divider
           orientation="left"
           style={{
-            fontSize: 14,
+            fontSize: 12,
             marginTop: isFirstElem ? "" : "32px",
             textTransform: "uppercase",
           }}
