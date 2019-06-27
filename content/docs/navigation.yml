@@ -1,62 +1,39 @@
-- divider: Introduction
-- group: test
+- group: Introduction
   items:
-    - item: The TypeCobol Initiative|Introduction.html
+    - item: The TypeCobol Initiative
+      href: /docs/introduction/
     - item: License
-      href: /docs/license.html
+      href: /docs/introduction/license.html
     - item: Roadmap
-      href: /docs/roadmap.html
+      href: /docs/introduction/roadmap.html
     - item: FAQ
-      href: /docs/faq.html
+      href: /docs/introduction/faq.html
     - item: Limitations of our Cobol parser
-      href: /docs/Limitations.html
-
-- divider: TypeCobol language in a nutshell
-- item: Types
-  href: /docs/TypeCobolTypesNutshell.html
-- item: Type samples
-  href: /docs/TypesSample.html
-- item: Procedures & Functions
-  href: /docs/TypeCobolFunctionNutshell.html
-- divider: TypeCobol concepts
-- item: Types
-  href: /docs/TypeCobolTypes.html
-- item: Booleans
-  href: /docs/TypeCobolTypeBool.html
-- item: Date
-  href: /docs/TypeCobolTypeDate.html
-- item: ":: operator"
-  href: /docs/TypeCobolNameQualification.html
-- item: Procedures & Functions
-  href: /docs/TypeCobolFunctions.html
-- item: Namespaces
-  href: /docs/Namespaces.html
-- item: Error
-  href: /docs/TypeCobolError.html
-- item: Detailed Rules
-  href: /docs/DetailedRules.html
-- divider: Syntax reference
-- item: TYPE & TYPEDEF clauses
-  href: /docs/Cobol02TYPEDEF.html
-- item: UNSAFE clause
-  href: /docs/TypeCobolUnsafe.html
-- item: ":: operator"
-  href: /docs/TypeCobolNameQualificationSyntax.html
-- item: ":: operator with Index"
-  href: /docs/TypeCobolIndexQualification.html
-- item: Procedures & Functions
-  href: /docs/TypeCobolFunctionsSyntax.html
-- item: Error
-  href: /docs/TypeCobolErrorSyntax.html
-- item: Comment
-  href: /docs/TypeCobolComment.html
-- item: Pointer
-  href: /docs/Pointer.html
-- item: Code generation
-  href: /docs/TypeCobolCodegen.html
-- item: Type
-  href: /docs/TypeCobolTypeCodegen.html
-- item: Procedures & Functions
-  href: /docs/TypeCobolFunctionsCodegen.html
-- item: Error
-  href: /docs/TypeCobolErrorCodeGen.html
+      href: /docs/introduction/limitations.html
+- divider: TypeCobol language
+- group: TCOB in a nutshell
+  icon: fire
+  items:
+    - item: Types
+      href: /docs/language/types/nutshell.html
+    - item: Type samples
+      href: /docs/language/types/samples.html
+    - item: Procedures & Functions
+      href: /docs/language/procedures-and-functions.html
+- group: TypeCobol concepts
+  items:
+    - item: Types
+      href: /docs/language/types/
+    - item: Boolean Type
+      href: /docs/language/types/boolean.html
+    - item: Date Type
+      href: /docs/language/types/date.html
+    - item: ":: operator"
+      href: /docs/language/name-qualification.html
+    - item: Procedures & Functions
+      href: /docs/language/procedures-and-functions_2.html
+    - item: Namespaces
+      href: /docs/language/namespaces.html
+    - item: Error
+      href: /docs/language/errors.html
+# stopped at detail rules atm WIP

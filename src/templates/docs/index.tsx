@@ -4,6 +4,7 @@ import { graphql } from "gatsby"
 import Layout from "@components/Layout"
 import processMarkdownHTML from "@utils/processMarkdownHTML"
 import { WindowLocation } from "@reach/router"
+import Title from "antd/lib/typography/Title"
 
 const NavigationYml = require("@docs/navigation.yml")
 
@@ -41,7 +42,7 @@ class DocsTpl extends React.Component<PageProps, {}> {
         sideNavigation={NavigationYml}
         Breadcrumb={{ location: this.props.location, label: title }}
       >
-        <h1>{title}</h1>
+        <Title style={{ fontSize: "2.5em" }}>{title}</Title>
         <div
           // eslint-disable-next-line
           dangerouslySetInnerHTML={{

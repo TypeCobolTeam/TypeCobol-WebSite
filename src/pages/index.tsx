@@ -7,6 +7,8 @@ import CodeWindow from "@components/CodeWindow"
 import { Layout as antdLayout, Typography } from "antd"
 import { WindowLocation } from "@reach/router"
 
+import "./index.less"
+
 const { Title } = Typography
 const { Content } = antdLayout
 
@@ -51,7 +53,15 @@ export default class extends React.Component<IndexPageProps, {}> {
               }}
             >
               <div style={{ textAlign: "center", margin: "0 0 70px 0" }}>
-                <img style={{ filter: "invert(99%) sepia(3%) saturate(0%) hue-rotate(46deg) brightness(117%) contrast(100%)" }} src={logo} alt="TypeCobol" className="tc-logo-home" />
+                <img
+                  style={{
+                    filter:
+                      "invert(99%) sepia(3%) saturate(0%) hue-rotate(46deg) brightness(117%) contrast(100%)",
+                  }}
+                  src={logo}
+                  alt="TypeCobol"
+                  className="tc-logo-home"
+                />
                 <Title level={3} style={{ marginTop: 0 }}>
                   {this.props.data.site.siteMetadata.desc}
                 </Title>
