@@ -14,16 +14,15 @@
     "develop": "gatsby develop",
     "deploy": "yarn clean && yarn test && yarn clean && yarn build",
     "eslint": "eslint . --ext .tsx,.ts.jsx,.js",
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "jest --config ./jest/jest.config.js"
   },
   "dependencies": {
-    "//": "gatsby-remark-codemirror is using a custom forked version atm since we added support for COBOL / waiting for PR to be merged",
     "@reach/router": "^1.2.1",
     "@typescript-eslint/eslint-plugin": "^1.10.2",
-    "@typescript-eslint/parser": "^1.10.2",
+    "@typescript-eslint/parser": "^1.11.0",
     "antd": "^3.19.5",
     "codemirror": "^5.48.0",
-    "eslint": "^5.16.0",
+    "eslint": "^6.0.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^5.0.0",
     "eslint-import-resolver-typescript": "^1.1.1",
@@ -54,10 +53,18 @@
     "webpack": "^4.34.0"
   },
   "devDependencies": {
+    "@testing-library/react": "^8.0.4",
+    "@types/jest": "^24.0.15",
     "@types/node": "12.0.7",
     "@types/react": "16.8.19",
     "@types/react-dom": "16.8.4",
     "@types/react-helmet": "5.0.8",
+    "babel-jest": "^24.8.0",
+    "eslint-plugin-jest": "^22.7.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.8.0",
+    "react-test-renderer": "^16.8.6",
+    "ts-jest": "^24.0.2",
     "typescript": "^3.5.2"
   }
 }
