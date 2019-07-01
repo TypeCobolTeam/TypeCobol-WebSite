@@ -4911,9 +4911,10 @@ gatsby-react-router-scroll@^2.0.7:
     scroll-behavior "^0.9.9"
     warning "^3.0.0"
 
-gatsby-remark-codemirror@NicolasStr/gatsby-remark-codemirror:
-  version "0.2.0"
-  resolved "https://codeload.github.com/NicolasStr/gatsby-remark-codemirror/tar.gz/07b4e027c2616566fc3fde2b372be9c21be09e55"
+gatsby-remark-codemirror@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-codemirror/-/gatsby-remark-codemirror-0.3.0.tgz#5cd1ce1ea257e2a34271ebbdc4b05f9c78094c79"
+  integrity sha512-oprSvuOGUCr51yBJzdfINtmithPbCVoq7Bp8jJQqPN9YIPGdTSGwo025AIE1w4NCel9LVqnVVrmP6ZMzONutrw==
   dependencies:
     codemirror "^5.40.2"
     graphql-language-service-parser "^1.2.2"
