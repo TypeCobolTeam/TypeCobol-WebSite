@@ -18,68 +18,75 @@ interface CLayoutProps {
   showFooter?: boolean
   sideNavigation?: any
   customContentLayout?: boolean
+  children?: React.ReactNode
   Breadcrumb: {
     location: WindowLocation
     label: string
   }
 }
 
-class CLayout extends React.Component<CLayoutProps, {}> {
-  public render() {
-    return (
-      <>
-        <HelmetInit />
-        <ConfigProvider prefixCls="tc">
-          <Layout>
-            {this.props.showHeader && <Header />}
-            <Layout
-              style={{
-                flexDirection: this.props.sideNavigation ? "row" : "column",
-              }}
-            >
-              {this.props.sideNavigation && (
-                <SideNavigation navigation={this.props.sideNavigation} />
-              )}
-              <Layout>
-                {this.props.customContentLayout ? (
-                  this.props.children
-                ) : (
-                  <Layout style={{ padding: "0 24px 24px 24px" }}>
-                    <div style={{ padding: "16px 24px" }}>
-                      <GBreadcrumb
-                        location={this.props.Breadcrumb.location}
-                        crumbLabel={this.props.Breadcrumb.label}
-                        crumbWrapperStyle={{ class: "tc-breadcrumb-wrapper" }}
-                        crumbSeparator="/"
-                      />
-                    </div>
-                    <Content
+const CLayout: React.StatelessComponent<CLayoutProps> = (
+  props: CLayoutProps
+) => {
+  const {
+    showHeader,
+    showFooter,
+    sideNavigation,
+    customContentLayout,
+    Breadcrumb,
+    children,
+  } = props
+  return (
+    <>
+      <HelmetInit />
+      <ConfigProvider prefixCls="tc">
+        <Layout>
+          {showHeader && <Header />}
+          <Layout
+            style={{
+              flexDirection: sideNavigation ? "row" : "column",
+            }}
+          >
+            {sideNavigation && <SideNavigation navigation={sideNavigation} />}
+            <Layout>
+              {customContentLayout ? (
+                children
+              ) : (
+                <Layout style={{ padding: "0 24px 24px 24px" }}>
+                  <div style={{ padding: "16px 24px" }}>
+                    <GBreadcrumb
+                      location={Breadcrumb.location}
+                      crumbLabel={Breadcrumb.label}
+                      crumbWrapperStyle={{ class: "tc-breadcrumb-wrapper" }}
+                      crumbSeparator="/"
+                    />
+                  </div>
+                  <Content
+                    style={{
+                      background: "#fff",
+                      margin: 0,
+                      minHeight: 280,
+                      padding: 24,
+                    }}
+                  >
+                    <div
                       style={{
-                        background: "#fff",
-                        margin: 0,
-                        minHeight: 280,
+                        minHeight: "calc(100vh - 234px)",
                         padding: 24,
                       }}
                     >
-                      <div
-                        style={{
-                          minHeight: "calc(100vh - 234px)",
-                          padding: 24,
-                        }}
-                      >
-                        {this.props.children}
-                      </div>
-                    </Content>
-                  </Layout>
-                )}
-                {this.props.showFooter && <Footer />}
-              </Layout>
+                      {children}
+                    </div>
+                  </Content>
+                </Layout>
+              )}
+              {showFooter && <Footer />}
             </Layout>
           </Layout>
-        </ConfigProvider>
-      </>
-    )
-  }
+        </Layout>
+      </ConfigProvider>
+    </>
+  )
 }
 
 export default CLayout

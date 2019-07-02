@@ -6,19 +6,17 @@ import "./index.less"
 
 const { Footer } = Layout
 
-class CFooter extends React.Component<{}, {}> {
-  public render() {
-    return (
-      <Footer
-        className="tc-footer"
-        style={{
-          textAlign: "center",
-        }}
-      >
-        TypeCobol 2019
-      </Footer>
-    )
-  }
+const CFooter: React.StatelessComponent = () => {
+  return (
+    <Footer
+      className="tc-footer"
+      style={{
+        textAlign: "center",
+      }}
+    >
+      <a href="/">Copyright TypeCobol 2019</a>
+    </Footer>
+  )
 }
 
 export default CFooter

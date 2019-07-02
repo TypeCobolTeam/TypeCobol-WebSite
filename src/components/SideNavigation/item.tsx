@@ -13,13 +13,6 @@ const activeLink = (href: string, actualPath: string) => {
   const result = actualPath.includes(href)
   return result
 }
-
-interface PageProps {
-  element: Navigation
-  index: number
-  pathname: string
-}
-
 const ItemRenderer = (element: Navigation, index: number, pathname: string) => {
   const isFirstElem = index === 0
   const type =
