@@ -21,3 +21,7 @@ export type Navigation = RequireAtLeastOne<
   "group" | "item" | "divider"
 >
 export type Navigations = Navigation[]
+
+export interface SideNavProps {
+  navigation?: Navigation[]
+}

@@ -4,7 +4,7 @@ import * as React from "react"
 import Layout from "@components/Layout"
 import { WindowLocation } from "@reach/router"
 
-interface PageProps {
+interface SingleTemplateProps {
   data: {
     markdownRemark: {
       frontmatter: {
@@ -27,24 +27,22 @@ export const pageQuery = graphql`
   }
 `
 
-class SingleTemplate extends React.Component<PageProps, {}> {
-  public render() {
-    const { html, frontmatter } = this.props.data.markdownRemark
-    const { title } = frontmatter
-    return (
-      <Layout
-        customContentLayout
-        Breadcrumb={{ location: this.props.location, label: title }}
-      >
-        <div
-          // eslint-disable-next-line
-          dangerouslySetInnerHTML={{
-            __html: processMarkdownHTML(html),
-          }}
-        />
-      </Layout>
-    )
-  }
+const SingleTemplate: React.StatelessComponent<SingleTemplateProps> = (
+  props: SingleTemplateProps
+) => {
+  const { data, location } = props
+  const { html, frontmatter } = data.markdownRemark
+  const { title } = frontmatter
+  return (
+    <Layout customContentLayout Breadcrumb={{ location, label: title }}>
+      <div
+        // eslint-disable-next-line
+        dangerouslySetInnerHTML={{
+          __html: processMarkdownHTML(html),
+        }}
+      />
+    </Layout>
+  )
 }
 
 export default SingleTemplate
