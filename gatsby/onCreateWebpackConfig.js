@@ -1,4 +1,5 @@
 const { resolve } = require("path")
+const eslint = require("eslint")
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 const CleanCSSPlugin = require("less-plugin-clean-css")
 
@@ -40,6 +41,7 @@ const onCreateWebpackConfig = ({ loaders, stage, actions }) => {
       emitWarning: false,
       failOnError: true,
       configFile: ".eslintrc",
+      formatter: eslint.CLIEngine.getFormatter("stylish"),
     },
   }
   const eslintRule = {
