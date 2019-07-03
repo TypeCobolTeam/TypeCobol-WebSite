@@ -7,5 +7,9 @@
   ],
   "eslint.provideLintTask": true,
   "eslint.alwaysShowStatus": true,
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "eslint.enable": true,
+  "jest.restartJestOnSnapshotUpdate": true,
+  "jest.pathToConfig": "",
+  "jest.pathToJest": "node_modules/.bin/jest --config ./jest/jest.config.js --u"
 }
