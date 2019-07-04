@@ -10,6 +10,7 @@ import { WindowLocation } from "@reach/router"
 import "./index.less"
 
 import { Breadcrumb as GBreadcrumb } from "gatsby-plugin-breadcrumb"
+import Helmet from "react-helmet"
 
 const { Content } = Layout
 
@@ -39,6 +40,9 @@ const CLayout: React.StatelessComponent<CLayoutProps> = (
   return (
     <>
       <HelmetInit />
+      {Breadcrumb.location.pathname !== "/" && (
+        <Helmet title={Breadcrumb.label} />
+      )}
       <ConfigProvider prefixCls="tc">
         <Layout>
           {showHeader && <Header />}

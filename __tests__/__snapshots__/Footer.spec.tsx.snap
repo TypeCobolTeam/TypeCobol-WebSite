@@ -9,11 +9,30 @@ initialize {
     },
     "children": Array [
       Object {
-        "data": "TypeCobol 2019",
+        "attribs": Object {
+          "href": "/",
+        },
+        "children": Array [
+          Object {
+            "data": "Copyright TypeCobol 2019",
+            "next": null,
+            "parent": [Circular],
+            "prev": null,
+            "type": "text",
+          },
+        ],
+        "name": "a",
+        "namespace": "http://www.w3.org/1999/xhtml",
         "next": null,
         "parent": [Circular],
         "prev": null,
-        "type": "text",
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "href": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "href": undefined,
+        },
       },
     ],
     "name": "footer",

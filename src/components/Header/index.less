@@ -10,3 +10,18 @@
     filter: invert(30%);
   }
 }
+.version {
+  &.tc-menu-item-selected {
+    box-shadow: none !important;
+    background-color: transparent !important;
+  }
+  color: @primary-color !important;
+  span {
+    padding: 5px 10px;
+    border-radius: 15px;
+  }
+  &.tc-menu-item-active span,
+  &.tc-menu-item-selected span {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+  }
+}
