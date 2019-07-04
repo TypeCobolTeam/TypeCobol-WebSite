@@ -3,6 +3,8 @@ id: index
 title: Docs
 ---
 
+![Image of Yaktocat](../images/620.png)
+
 # Markdown: Syntax
 
 - [Markdown: Syntax](#Markdown-Syntax)
