@@ -1,0 +1,17 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "yzhang.markdown-all-in-one",
+    "eg2.vscode-npm-script",
+    "christian-kohler.npm-intellisense",
+    "esbenp.prettier-vscode",
+    "formulahendry.auto-rename-tag",
+    "orta.vscode-jest"
+  ],
+  "unwantedRecommendations": [
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "eg2.tslint",
+    "hookyqr.beautify",
+    "dbaeumer.jshint"
+  ]
+}

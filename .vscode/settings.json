@@ -11,5 +11,19 @@
   "eslint.enable": true,
   "jest.restartJestOnSnapshotUpdate": true,
   "jest.pathToConfig": "",
-  "jest.pathToJest": "node_modules/.bin/jest --config ./jest/jest.config.js --u"
+  "jest.pathToJest": "yarn test -- -u",
+  "editor.formatOnPaste": true,
+  "explorer.sortOrder": "type",
+  "workbench.editor.highlightModifiedTabs": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/*.cache": true,
+    "**/node_modules": true,
+    "**/LICENSE.md": true
+  }
 }
