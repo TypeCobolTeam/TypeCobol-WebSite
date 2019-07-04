@@ -5,6 +5,7 @@ import { Layout, Menu, Icon } from "antd"
 
 import "./index.less"
 import { Location } from "@reach/router"
+import { current } from "@utils/versions"
 
 const logo = require("@images/logo.svg")
 const NavbarYml: NavElement[] = require("@content/navbar.yml")
@@ -87,6 +88,19 @@ const Header: React.StatelessComponent = () => {
                 >
                   <Icon type="github" style={{ fontSize: 30 }} />
                 </a>
+              </Menu.Item>
+              <Menu.Item
+                key={
+                  activeLink("/versions", props.location.pathname)
+                    ? "active"
+                    : "versions"
+                }
+                className="version"
+                style={{ float: "right" }}
+              >
+                <Link to="/versions">
+                  <span>{`v${current}`}</span>
+                </Link>
               </Menu.Item>
             </Menu>
           )
