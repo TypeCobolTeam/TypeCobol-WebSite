@@ -40,13 +40,17 @@ const copyAndSanitizeIfHTML = (src, dest) => {
   }
 }
 
-// Run Copy to tmp folder
-copyAndSanitizeIfHTML(inputDocFolder, tempZipFolder)
-copyAndSanitizeIfHTML(inputStaticFolder, path.join(tempZipFolder, "static"))
+const createZip = () => {
+  // Run Copy to tmp folder
+  copyAndSanitizeIfHTML(inputDocFolder, tempZipFolder)
+  copyAndSanitizeIfHTML(inputStaticFolder, path.join(tempZipFolder, "static"))
 
-// Create Archive
-fs.mkdirSync(path.join(process.cwd(), "static"), { recursive: true })
-const output = fs.createWriteStream(zipFile)
-archive.pipe(output)
-archive.directory(tempZipFolder, false)
-archive.finalize()
+  // Create Archive
+  fs.mkdirSync(path.join(process.cwd(), "static"), { recursive: true })
+  const output = fs.createWriteStream(zipFile)
+  archive.pipe(output)
+  archive.directory(tempZipFolder, false)
+  archive.finalize()
+}
+
+module.exports = createZip
