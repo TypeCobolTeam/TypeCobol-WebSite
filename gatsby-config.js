@@ -1,3 +1,32 @@
+let options
+
+if (process.env.BUILD_HTML) {
+  options = ["gatsby-plugin-no-javascript"]
+} else {
+  options = [
+    "gatsby-plugin-sitemap",
+    "gatsby-plugin-catch-links",
+    {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        name: "TypeCobol",
+        short_name: "TypeCobol",
+        start_url: "/",
+        background_color: "#f0f2f5",
+        theme_color: "#ffffff",
+        display: "standalone",
+        icon: "content/images/favicon.png",
+      },
+    },
+    {
+      resolve: "gatsby-plugin-offline",
+      options: {
+        cacheId: "typecobol-cache",
+      },
+    },
+  ]
+}
+
 module.exports = {
   siteMetadata: {
     siteUrl: "https://xcmci02d.formation.cm-cic.fr",
@@ -44,26 +73,6 @@ module.exports = {
         },
       },
     },
-    "gatsby-plugin-sitemap",
-    "gatsby-plugin-catch-links",
-    {
-      resolve: "gatsby-plugin-manifest",
-      options: {
-        name: "TypeCobol",
-        short_name: "TypeCobol",
-        start_url: "/",
-        background_color: "#f0f2f5",
-        theme_color: "#ffffff",
-        display: "standalone",
-        icon: "content/images/favicon.png",
-      },
-    },
-    {
-      resolve: "gatsby-plugin-offline",
-      options: {
-        cacheId: "typecobol-cache",
-      },
-    },
-    "gatsby-plugin-meta-redirect",
+    ...options,
   ],
 }
