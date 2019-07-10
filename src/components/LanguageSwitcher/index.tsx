@@ -1,58 +1,50 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
-import { Modal, Icon } from "antd"
+import { Icon, Dropdown, Menu } from "antd"
 import * as React from "react"
 import Flag from "@components/Flag"
 import { navigate } from "gatsby"
 
 const languages = require("content/i18n/languages.yml")
 
-class LanguageSwitcher extends React.Component<
-  { tag: string },
-  { modalVisible: boolean }
-> {
-  constructor(props) {
-    super(props)
-    this.state = {
-      modalVisible: false,
-    }
-  }
+interface LanguageSwitcherProps {
+  tag: string
+}
 
-  setModalVisible(modalVisible) {
-    this.setState({ modalVisible })
-  }
+const menu = actualLang => {
+  return (
+    <Menu>
+      {languages.map(element => {
+        if (actualLang !== element.tag) {
+          const tagg = element.tag === "en" ? "us" : element.tag
+          return (
+            <Menu.Item key={tagg} onClick={() => navigate(element.tag)}>
+              <Flag iso={tagg} size={20} />
+            </Menu.Item>
+          )
+        }
+        return <span />
+      })}
+    </Menu>
+  )
+}
 
-  public render() {
-    const tag = this.props.tag === "en" ? "us" : this.props.tag
-    return (
-      <div>
-        <span onClick={() => this.setModalVisible(true)}>
+const LanguageSwitcher: React.FunctionComponent<LanguageSwitcherProps> = (
+  props: LanguageSwitcherProps
+) => {
+  const tag = props.tag === "en" ? "us" : props.tag
+  return (
+    <div>
+      <Dropdown overlay={menu(props.tag)}>
+        <span className="ant-dropdown-link">
           {tag.toUpperCase()}
           <Icon style={{ marginLeft: 5 }} type="global" />
+          <Icon type="down" />
         </span>
-        <Modal
-          title=""
-          centered
-          visible={this.state.modalVisible}
-          onCancel={() => this.setModalVisible(false)}
-          footer={null}
-        >
-          {languages.map(element => {
-            const tagg = element.tag === "en" ? "us" : element.tag
-            return (
-              <Flag
-                key={tagg}
-                iso={tagg}
-                size={40}
-                onClick={() => navigate(element.tag)}
-              />
-            )
-          })}
-        </Modal>
-      </div>
-    )
-  }
+      </Dropdown>
+    </div>
+  )
 }
 
 export default LanguageSwitcher

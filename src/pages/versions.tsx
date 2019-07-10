@@ -5,8 +5,6 @@ import { Layout as antdLayout, Typography } from "antd"
 import { WindowLocation } from "@reach/router"
 import { versions } from "@utils/versions"
 
-import "./index.less"
-
 const { Title } = Typography
 const { Content } = antdLayout
 

@@ -10,8 +10,6 @@ import { WindowLocation } from "@reach/router"
 import "./index.less"
 
 import { Breadcrumb as GBreadcrumb } from "gatsby-plugin-breadcrumb"
-import Helmet from "react-helmet"
-
 const { Content } = Layout
 
 interface CLayoutProps {
@@ -42,12 +40,7 @@ const CLayout: React.StatelessComponent<CLayoutProps> = (
   const langCode = translationCode || "en"
   return (
     <>
-      <HelmetInit />
-      {Breadcrumb.location.pathname !== "/" && (
-        <Helmet title={Breadcrumb.label}>
-          <html lang={langCode} />
-        </Helmet>
-      )}
+      <HelmetInit title={Breadcrumb.label} lang={langCode} />
       <ConfigProvider prefixCls="tc">
         <Layout>
           {showHeader && <Header translationCode={langCode} />}
