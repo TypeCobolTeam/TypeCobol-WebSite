@@ -4,7 +4,6 @@ import Helmet from "react-helmet"
 const CHelmet: React.StatelessComponent = () => {
   return (
     <Helmet
-      encodeSpecialCharacters
       defaultTitle="TypeCobol"
       titleTemplate="TypeCobol - %s"
       meta={[

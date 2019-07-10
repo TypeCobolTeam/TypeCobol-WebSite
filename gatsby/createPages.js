@@ -1,5 +1,7 @@
 const { resolve } = require("path")
 
+const defaultlangKey = "en"
+
 const createPage = async ({ graphql, actions }) => {
   // eslint-disable-next-line no-shadow
   const { createPage, createRedirect } = actions
@@ -14,6 +16,10 @@ const createPage = async ({ graphql, actions }) => {
               id
               fields {
                 slug
+                isTranslation
+                translationCode
+                template
+                isFourOFour
               }
               frontmatter {
                 disablePage
@@ -26,73 +32,90 @@ const createPage = async ({ graphql, actions }) => {
     `
   )
 
-  // select templates according to slug (=path) generated @ /gatsby/onCreateNode.ts
-  const selectTemplate = slug => {
-    if (slug.includes("community/")) {
-      return resolve(`src/templates/community/index.tsx`)
-    }
-    if (slug.includes("docs/")) {
-      return resolve(`src/templates/docs/index.tsx`)
-    }
-    return resolve(`src/templates/single/index.tsx`)
-  }
-
   allMarkdownRemark.data.allMarkdownRemark.edges.forEach(edge => {
-    const { slug } = edge.node.fields
+    const {
+      slug,
+      isTranslation,
+      translationCode,
+      template,
+      isFourOFour,
+    } = edge.node.fields
     const { id, frontmatter } = edge.node
     const { disablePage } = frontmatter
 
-    // avoid having two vars with same name
     const redirectHereFrom = frontmatter.redirectFrom
 
-    if (!slug || disablePage) return
+    if (!slug || disablePage || template === "") return
 
-    const template = selectTemplate(slug)
-
-    const path = slug.replace(/[/\\]index.html/gi, "")
+    let FourOFourOptions = {}
+    if (isFourOFour && isTranslation) {
+      FourOFourOptions = {
+        matchPath: `/${defaultlangKey}/*`,
+      }
+    }
 
     createPage({
-      path,
-      component: template,
+      path: slug,
+      component: resolve(template),
       context: {
-        slug: path,
+        slug,
         id,
+        translation: isTranslation ? translationCode : defaultlangKey,
       },
+      ...FourOFourOptions,
     })
 
-    // Redirect from /category/page to /category/page.html
-    let redirectFrom = slug.replace(".html", "")
-    createRedirect({
-      fromPath: redirectFrom,
-      isPermanent: true,
-      redirectInBrowser: true,
-      toPath: path,
-    })
+    if (translationCode === defaultlangKey) {
+      const fromPath = slug.replace(`/${translationCode}`, "")
+      createRedirect({
+        fromPath,
+        toPath: slug,
+        isPermanent: true,
+        redirectInBrowser: true,
+      })
+    }
+
+    let fromPath = slug.replace(".html", "")
+    if (fromPath !== slug) {
+      createRedirect({
+        fromPath,
+        toPath: slug,
+        isPermanent: true,
+        redirectInBrowser: true,
+      })
+    }
 
     // allow a redirect_form meta tag in pages
-    redirectFrom = redirectHereFrom
-    if (!redirectFrom) return
-    if (typeof redirectFrom === "string") {
+    fromPath = redirectHereFrom
+    if (!fromPath) return
+    if (typeof fromPath === "string") {
       createRedirect({
-        fromPath: redirectFrom,
-        toPath: path,
+        fromPath,
+        toPath: slug,
         isPermanent: true,
         redirectInBrowser: true,
       })
     } else if (
-      typeof redirectFrom === "object" &&
-      redirectFrom !== null &&
-      redirectFrom !== ""
+      typeof fromPath === "object" &&
+      fromPath !== null &&
+      fromPath !== ""
     ) {
-      redirectFrom.forEach(from => {
+      fromPath.forEach(from => {
         createRedirect({
           fromPath: from,
-          toPath: path,
+          toPath: slug,
           isPermanent: true,
           redirectInBrowser: true,
         })
       })
     }
+    fromPath = "/"
+    createRedirect({
+      fromPath,
+      toPath: `/${defaultlangKey}/`,
+      isPermanent: true,
+      redirectInBrowser: true,
+    })
   })
 }
 

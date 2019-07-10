@@ -1,0 +1,59 @@
+- divider: Introduction
+- item: The TypeCobol Initiative|Introduction.html
+- item: License
+  href: /community/license.html
+- item: Roadmap
+  href: /community/roadmap.html
+- item: FAQ
+  href: /community/faq.html
+- item: Limitations of our Cobol parser
+  href: /community/Limitations.html
+- divider: TypeCobol language in a nutshell
+- item: Types
+  href: /community/TypeCobolTypesNutshell.html
+- item: Type samples
+  href: /community/TypesSample.html
+- item: Procedures & Functions
+  href: /community/TypeCobolFunctionNutshell.html
+- divider: TypeCobol concepts
+- item: Types
+  href: /community/TypeCobolTypes.html
+- item: Booleans
+  href: /community/TypeCobolTypeBool.html
+- item: Date
+  href: /community/TypeCobolTypeDate.html
+- item: ":: operator"
+  href: /community/TypeCobolNameQualification.html
+- item: Procedures & Functions
+  href: /community/TypeCobolFunctions.html
+- item: Namespaces
+  href: /community/Namespaces.html
+- item: Error
+  href: /community/TypeCobolError.html
+- item: Detailed Rules
+  href: /community/DetailedRules.html
+- divider: Syntax reference
+- item: TYPE & TYPEDEF clauses
+  href: /community/Cobol02TYPEDEF.html
+- item: UNSAFE clause
+  href: /community/TypeCobolUnsafe.html
+- item: ":: operator"
+  href: /community/TypeCobolNameQualificationSyntax.html
+- item: ":: operator with Index"
+  href: /community/TypeCobolIndexQualification.html
+- item: Procedures & Functions
+  href: /community/TypeCobolFunctionsSyntax.html
+- item: Error
+  href: /community/TypeCobolErrorSyntax.html
+- item: Comment
+  href: /community/TypeCobolComment.html
+- item: Pointer
+  href: /community/Pointer.html
+- item: Code generation
+  href: /community/TypeCobolCodegen.html
+- item: Type
+  href: /community/TypeCobolTypeCodegen.html
+- item: Procedures & Functions
+  href: /community/TypeCobolFunctionsCodegen.html
+- item: Error
+  href: /community/TypeCobolErrorCodeGen.html

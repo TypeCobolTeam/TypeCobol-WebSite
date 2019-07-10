@@ -24,6 +24,7 @@ interface CLayoutProps {
     location: WindowLocation
     label: string
   }
+  translationCode?: string
 }
 
 const CLayout: React.StatelessComponent<CLayoutProps> = (
@@ -36,16 +37,20 @@ const CLayout: React.StatelessComponent<CLayoutProps> = (
     customContentLayout,
     Breadcrumb,
     children,
+    translationCode,
   } = props
+  const langCode = translationCode || "en"
   return (
     <>
       <HelmetInit />
       {Breadcrumb.location.pathname !== "/" && (
-        <Helmet title={Breadcrumb.label} />
+        <Helmet title={Breadcrumb.label}>
+          <html lang={langCode} />
+        </Helmet>
       )}
       <ConfigProvider prefixCls="tc">
         <Layout>
-          {showHeader && <Header />}
+          {showHeader && <Header translationCode={langCode} />}
           <Layout
             style={{
               flexDirection: sideNavigation ? "row" : "column",

@@ -10,6 +10,9 @@ interface SingleTemplateProps {
       frontmatter: {
         title: string
       }
+      fields: {
+        translationCode: string
+      }
       html: string
     }
   }
@@ -22,6 +25,9 @@ export const pageQuery = graphql`
       frontmatter {
         title
       }
+      fields {
+        translationCode
+      }
       html
     }
   }
@@ -30,11 +36,22 @@ export const pageQuery = graphql`
 const SingleTemplate: React.StatelessComponent<SingleTemplateProps> = (
   props: SingleTemplateProps
 ) => {
-  const { data, location } = props
-  const { html, frontmatter } = data.markdownRemark
-  const { title } = frontmatter
+  const {
+    data: {
+      markdownRemark: {
+        html,
+        frontmatter: { title },
+        fields: { translationCode },
+      },
+    },
+    location,
+  } = props
   return (
-    <Layout customContentLayout Breadcrumb={{ location, label: title }}>
+    <Layout
+      customContentLayout
+      Breadcrumb={{ location, label: title }}
+      translationCode={translationCode}
+    >
       <div
         // eslint-disable-next-line
         dangerouslySetInnerHTML={{

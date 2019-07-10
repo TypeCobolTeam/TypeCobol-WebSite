@@ -6,13 +6,14 @@ import processMarkdownHTML from "@utils/processMarkdownHTML"
 import { WindowLocation } from "@reach/router"
 import Title from "antd/lib/typography/Title"
 
-const NavigationYml = require("@docs/navigation.yml")
-
 interface DocsTemplateProps {
   data: {
     markdownRemark: {
       frontmatter: {
         title: string
+      }
+      fields: {
+        translationCode: string
       }
       html: string
     }
@@ -26,6 +27,9 @@ export const pageQuery = graphql`
       frontmatter {
         title
       }
+      fields {
+        translationCode
+      }
       html
     }
   }
@@ -34,15 +38,25 @@ export const pageQuery = graphql`
 const DocsTemplate: React.StatelessComponent<DocsTemplateProps> = (
   props: DocsTemplateProps
 ) => {
-  const { data, location } = props
-  const { html, frontmatter } = data.markdownRemark
-  const { title } = frontmatter
+  const {
+    data: {
+      markdownRemark: {
+        html,
+        frontmatter: { title },
+        fields: { translationCode },
+      },
+    },
+    location,
+  } = props
+  // eslint-disable-next-line
+  const NavigationYml = require(`../../../content/i18n/${translationCode}/docs/navigation.yml`)
   return (
     <Layout
       showFooter
       showHeader
       sideNavigation={NavigationYml}
       Breadcrumb={{ location, label: title }}
+      translationCode={translationCode}
     >
       <Title style={{ fontSize: "2.5em" }}>{title}</Title>
       <div

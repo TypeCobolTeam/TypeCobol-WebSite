@@ -1,5 +1,6 @@
 - divider: Introduction
-- item: The TypeCobol Initiative|Introduction.html
+- item: L'initiative TypeCobol
+  href: Introduction.html
 - item: License
   href: /community/license.html
 - item: Roadmap

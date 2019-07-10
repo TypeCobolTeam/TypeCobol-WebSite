@@ -15,6 +15,9 @@ const { Content } = antdLayout
 const logo = require("@images/logo.svg")
 
 interface IndexPageProps {
+  pageContext: {
+    translation: string
+  }
   data: {
     site: {
       siteMetadata: {
@@ -40,8 +43,15 @@ export const pageQuery = graphql`
 const IndexPage: React.StatelessComponent<IndexPageProps> = (
   props: IndexPageProps
 ) => {
-  const { data, location } = props
-  const { title, desc } = data.site.siteMetadata
+  const {
+    data: {
+      site: {
+        siteMetadata: { title, desc },
+      },
+    },
+    pageContext: { translation },
+    location,
+  } = props
   return (
     <>
       <Layout
@@ -52,6 +62,7 @@ const IndexPage: React.StatelessComponent<IndexPageProps> = (
           label: title,
           location,
         }}
+        translationCode={translation}
       >
         <Content
           style={{

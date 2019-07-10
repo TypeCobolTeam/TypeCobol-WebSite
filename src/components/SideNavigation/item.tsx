@@ -83,6 +83,7 @@ const ItemRenderer = (element: Navigation, index: number, pathname: string) => {
     case "divider":
       return (
         <Divider
+          key={index}
           orientation="left"
           style={{
             fontSize: 12,

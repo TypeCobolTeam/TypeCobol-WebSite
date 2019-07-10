@@ -35,7 +35,7 @@ const VersionsPage: React.StatelessComponent<VersionsPageProps> = (
           {Object.entries(versions).map(elem => {
             const [version, info] = elem
             return (
-              <div style={{ padding: "10px 0", fontSize: 15 }}>
+              <div key={version} style={{ padding: "10px 0", fontSize: 15 }}>
                 <Title level={2}>{version}</Title>
                 <ul>
                   <li>
