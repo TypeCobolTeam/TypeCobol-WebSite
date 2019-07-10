@@ -55,6 +55,7 @@ const DocsTemplate: React.StatelessComponent<DocsTemplateProps> = (
       showFooter
       showHeader
       sideNavigation={NavigationYml}
+      navPrefix="docs"
       Breadcrumb={{ location, label: title }}
       translationCode={translationCode}
     >

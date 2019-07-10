@@ -55,6 +55,7 @@ const CommunityTemplate: React.StatelessComponent<CommunityTemplateProps> = (
       showFooter
       showHeader
       sideNavigation={NavigationYml}
+      navPrefix="community"
       Breadcrumb={{ location, label: title }}
       translationCode={translationCode}
     >

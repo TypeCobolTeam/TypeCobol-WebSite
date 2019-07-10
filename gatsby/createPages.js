@@ -88,18 +88,7 @@ const createPage = async ({ graphql, actions }) => {
     // allow a redirect_form meta tag in pages
     fromPath = redirectHereFrom
     if (!fromPath) return
-    if (typeof fromPath === "string") {
-      createRedirect({
-        fromPath,
-        toPath: slug,
-        isPermanent: true,
-        redirectInBrowser: true,
-      })
-    } else if (
-      typeof fromPath === "object" &&
-      fromPath !== null &&
-      fromPath !== ""
-    ) {
+    if (typeof fromPath === "object" && fromPath !== null && fromPath !== "") {
       fromPath.forEach(from => {
         createRedirect({
           fromPath: from,

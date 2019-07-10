@@ -10,10 +10,17 @@ const activeLink = (href: string, actualPath: string) => {
   if (href.endsWith("/")) {
     return href === actualPath
   }
-  const result = actualPath.includes(href)
-  return result
+  return actualPath.includes(href)
 }
-const ItemRenderer = (element: Navigation, index: number, pathname: string) => {
+const ItemRenderer = (
+  element: Navigation,
+  index: number,
+  pathname: string,
+  activeLang: string,
+  prefix: string
+) => {
+  const urlPrefix =
+    prefix !== "" ? `/${activeLang}/${prefix}` : `/${activeLang}`
   const isFirstElem = index === 0
   const type =
     // eslint-disable-next-line
@@ -33,7 +40,9 @@ const ItemRenderer = (element: Navigation, index: number, pathname: string) => {
       return (
         <SubMenu
           key={
-            element.items.some(v => activeLink(v.href, pathname))
+            element.items.some(v =>
+              activeLink(`${urlPrefix}/${v.href}`, pathname)
+            )
               ? "submenu-active"
               : index
           }
@@ -45,7 +54,7 @@ const ItemRenderer = (element: Navigation, index: number, pathname: string) => {
           }
         >
           {element.items.map((_item, _index) =>
-            ItemRenderer(_item, _index, pathname)
+            ItemRenderer(_item, _index, pathname, activeLang, prefix)
           )}
         </SubMenu>
       )
@@ -69,13 +78,19 @@ const ItemRenderer = (element: Navigation, index: number, pathname: string) => {
             {elem}
           </a>
         ) : (
-          <Link to={element.href}>
+          <Link to={`${urlPrefix}/${element.href}`}>
             {icon}
             {elem}
           </Link>
         )
       return (
-        <Menu.Item key={activeLink(element.href, pathname) ? "active" : index}>
+        <Menu.Item
+          key={
+            activeLink(`${urlPrefix}/${element.href}`, pathname)
+              ? "active"
+              : index
+          }
+        >
           {linktag}
         </Menu.Item>
       )

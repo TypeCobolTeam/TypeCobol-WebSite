@@ -1,59 +1,59 @@
 - divider: Introduction
 - item: The TypeCobol Initiative|Introduction.html
 - item: License
-  href: /community/license.html
+  href: license.html
 - item: Roadmap
-  href: /community/roadmap.html
+  href: roadmap.html
 - item: FAQ
-  href: /community/faq.html
+  href: faq.html
 - item: Limitations of our Cobol parser
-  href: /community/Limitations.html
+  href: Limitations.html
 - divider: TypeCobol language in a nutshell
 - item: Types
-  href: /community/TypeCobolTypesNutshell.html
+  href: TypeCobolTypesNutshell.html
 - item: Type samples
-  href: /community/TypesSample.html
+  href: TypesSample.html
 - item: Procedures & Functions
-  href: /community/TypeCobolFunctionNutshell.html
+  href: TypeCobolFunctionNutshell.html
 - divider: TypeCobol concepts
 - item: Types
-  href: /community/TypeCobolTypes.html
+  href: TypeCobolTypes.html
 - item: Booleans
-  href: /community/TypeCobolTypeBool.html
+  href: TypeCobolTypeBool.html
 - item: Date
-  href: /community/TypeCobolTypeDate.html
+  href: TypeCobolTypeDate.html
 - item: ":: operator"
-  href: /community/TypeCobolNameQualification.html
+  href: TypeCobolNameQualification.html
 - item: Procedures & Functions
-  href: /community/TypeCobolFunctions.html
+  href: TypeCobolFunctions.html
 - item: Namespaces
-  href: /community/Namespaces.html
+  href: Namespaces.html
 - item: Error
-  href: /community/TypeCobolError.html
+  href: TypeCobolError.html
 - item: Detailed Rules
-  href: /community/DetailedRules.html
+  href: DetailedRules.html
 - divider: Syntax reference
 - item: TYPE & TYPEDEF clauses
-  href: /community/Cobol02TYPEDEF.html
+  href: Cobol02TYPEDEF.html
 - item: UNSAFE clause
-  href: /community/TypeCobolUnsafe.html
+  href: TypeCobolUnsafe.html
 - item: ":: operator"
-  href: /community/TypeCobolNameQualificationSyntax.html
+  href: TypeCobolNameQualificationSyntax.html
 - item: ":: operator with Index"
-  href: /community/TypeCobolIndexQualification.html
+  href: TypeCobolIndexQualification.html
 - item: Procedures & Functions
-  href: /community/TypeCobolFunctionsSyntax.html
+  href: TypeCobolFunctionsSyntax.html
 - item: Error
-  href: /community/TypeCobolErrorSyntax.html
+  href: TypeCobolErrorSyntax.html
 - item: Comment
-  href: /community/TypeCobolComment.html
+  href: TypeCobolComment.html
 - item: Pointer
-  href: /community/Pointer.html
+  href: Pointer.html
 - item: Code generation
-  href: /community/TypeCobolCodegen.html
+  href: TypeCobolCodegen.html
 - item: Type
-  href: /community/TypeCobolTypeCodegen.html
+  href: TypeCobolTypeCodegen.html
 - item: Procedures & Functions
-  href: /community/TypeCobolFunctionsCodegen.html
+  href: TypeCobolFunctionsCodegen.html
 - item: Error
-  href: /community/TypeCobolErrorCodeGen.html
+  href: TypeCobolErrorCodeGen.html

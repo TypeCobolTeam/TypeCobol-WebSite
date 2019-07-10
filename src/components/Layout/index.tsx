@@ -23,6 +23,7 @@ interface CLayoutProps {
     label: string
   }
   translationCode?: string
+  navPrefix?: string
 }
 
 const CLayout: React.StatelessComponent<CLayoutProps> = (
@@ -36,6 +37,7 @@ const CLayout: React.StatelessComponent<CLayoutProps> = (
     Breadcrumb,
     children,
     translationCode,
+    navPrefix,
   } = props
   const langCode = translationCode || "en"
   return (
@@ -49,7 +51,13 @@ const CLayout: React.StatelessComponent<CLayoutProps> = (
               flexDirection: sideNavigation ? "row" : "column",
             }}
           >
-            {sideNavigation && <SideNavigation navigation={sideNavigation} />}
+            {sideNavigation && (
+              <SideNavigation
+                prefix={navPrefix || ""}
+                activeLang={langCode}
+                navigation={sideNavigation}
+              />
+            )}
             <Layout>
               {customContentLayout ? (
                 children
