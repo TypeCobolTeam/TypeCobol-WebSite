@@ -10,7 +10,7 @@
   "scripts": {
     "zip": "export ZIP=true || set ZIP=true&& yarn clean && yarn test && yarn clean && yarn gbuild && yarn clean",
     "build": "yarn clean && yarn test && yarn clean && yarn gbuild",
-    "zip_and_build": "yarn zip && yarn deploy",
+    "zip_and_build": "yarn zip && yarn build",
     "gbuild": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",

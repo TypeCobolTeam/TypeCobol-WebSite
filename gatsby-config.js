@@ -1,6 +1,6 @@
 let options
 
-if (process.env.BUILD_HTML) {
+if (process.env.ZIP) {
   options = ["gatsby-plugin-no-javascript"]
 } else {
   options = [
