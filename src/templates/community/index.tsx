@@ -14,6 +14,7 @@ interface CommunityTemplateProps {
       }
       fields: {
         translationCode: string
+        gitLink: string
       }
       html: string
     }
@@ -29,6 +30,7 @@ export const pageQuery = graphql`
       }
       fields {
         translationCode
+        gitLink
       }
       html
     }
@@ -43,7 +45,7 @@ const CommunityTemplate: React.StatelessComponent<CommunityTemplateProps> = (
       markdownRemark: {
         html,
         frontmatter: { title },
-        fields: { translationCode },
+        fields: { translationCode, gitLink },
       },
     },
     location,
@@ -58,6 +60,7 @@ const CommunityTemplate: React.StatelessComponent<CommunityTemplateProps> = (
       navPrefix="community"
       Breadcrumb={{ location, label: title }}
       translationCode={translationCode}
+      gitLink={gitLink}
     >
       <Title style={{ fontSize: "2.5em" }}>{title}</Title>
       <div

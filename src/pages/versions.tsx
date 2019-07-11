@@ -25,6 +25,7 @@ const VersionsPage: React.StatelessComponent<VersionsPageProps> = (
           label: "Versions",
           location,
         }}
+        translationCode="en"
       >
         <Content>
           <Title level={1} style={{ marginBottom: 40 }}>

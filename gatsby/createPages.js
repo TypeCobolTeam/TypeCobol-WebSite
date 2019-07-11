@@ -78,8 +78,6 @@ const createPage = async ({ graphql, actions }) => {
         isPermanent: true,
         redirectInBrowser: true,
       })
-      // eslint-disable-next-line no-console
-      console.log(`${fromPath} --> ${slug}`)
     }
 
     let fromPath = slug.replace(".html", "")
@@ -90,8 +88,6 @@ const createPage = async ({ graphql, actions }) => {
         isPermanent: true,
         redirectInBrowser: true,
       })
-      // eslint-disable-next-line no-console
-      console.log(`${fromPath} --> ${slug}`)
     }
 
     // allow a redirect_form meta tag in pages
@@ -105,8 +101,6 @@ const createPage = async ({ graphql, actions }) => {
           isPermanent: true,
           redirectInBrowser: true,
         })
-        // eslint-disable-next-line no-console
-        console.log(`${fromPath} --> ${slug}`)
       })
     }
   })

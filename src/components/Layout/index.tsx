@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { Layout, ConfigProvider } from "antd"
+import { Layout, ConfigProvider, Icon } from "antd"
 
 import Footer from "@components/Footer"
 import HelmetInit from "@components/Helmet"
@@ -24,9 +24,10 @@ interface CLayoutProps {
   }
   translationCode?: string
   navPrefix?: string
+  gitLink?: string
 }
 
-const CLayout: React.StatelessComponent<CLayoutProps> = (
+const CLayout: React.FunctionComponent<CLayoutProps> = (
   props: CLayoutProps
 ) => {
   const {
@@ -38,6 +39,7 @@ const CLayout: React.StatelessComponent<CLayoutProps> = (
     children,
     translationCode,
     navPrefix,
+    gitLink,
   } = props
   const langCode = translationCode || "en"
   return (
@@ -85,6 +87,19 @@ const CLayout: React.StatelessComponent<CLayoutProps> = (
                         padding: 24,
                       }}
                     >
+                      {gitLink && (
+                        <a
+                          href={gitLink}
+                          style={{
+                            width: "100%",
+                            float: "right",
+                            textAlign: "right",
+                          }}
+                        >
+                          Edit on Github
+                          <Icon type="github" style={{ marginLeft: 5 }} />
+                        </a>
+                      )}
                       {children}
                     </div>
                   </Content>

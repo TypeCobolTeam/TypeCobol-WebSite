@@ -14,6 +14,7 @@ interface DocsTemplateProps {
       }
       fields: {
         translationCode: string
+        gitLink: string
       }
       html: string
     }
@@ -29,6 +30,7 @@ export const pageQuery = graphql`
       }
       fields {
         translationCode
+        gitLink
       }
       html
     }
@@ -43,7 +45,7 @@ const DocsTemplate: React.StatelessComponent<DocsTemplateProps> = (
       markdownRemark: {
         html,
         frontmatter: { title },
-        fields: { translationCode },
+        fields: { translationCode, gitLink },
       },
     },
     location,
@@ -58,6 +60,7 @@ const DocsTemplate: React.StatelessComponent<DocsTemplateProps> = (
       navPrefix="docs"
       Breadcrumb={{ location, label: title }}
       translationCode={translationCode}
+      gitLink={gitLink}
     >
       <Title style={{ fontSize: "2.5em" }}>{title}</Title>
       <div

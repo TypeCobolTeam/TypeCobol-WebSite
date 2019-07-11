@@ -35,15 +35,13 @@ const LanguageSwitcher: React.FunctionComponent<LanguageSwitcherProps> = (
 ) => {
   const tag = props.tag === "en" ? "us" : props.tag
   return (
-    <div>
-      <Dropdown overlay={menu(props.tag)}>
-        <span className="ant-dropdown-link">
-          {tag.toUpperCase()}
-          <Icon style={{ marginLeft: 5 }} type="global" />
-          <Icon type="down" />
-        </span>
-      </Dropdown>
-    </div>
+    <Dropdown overlay={menu(props.tag)}>
+      <span className="ant-dropdown-link">
+        {tag.toUpperCase()}
+        <Icon style={{ marginLeft: 5 }} type="global" />
+        <Icon type="down" />
+      </span>
+    </Dropdown>
   )
 }
 

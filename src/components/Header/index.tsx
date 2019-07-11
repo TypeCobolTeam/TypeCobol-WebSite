@@ -23,10 +23,11 @@ interface HeaderProps {
 }
 
 const activeLink = (href: string, actualPath: string) => {
-  if (href === "/") {
-    return href === actualPath
+  const url = href.startsWith("/") ? href : `/${href}`
+  if (url.endsWith("/")) {
+    return url === actualPath
   }
-  return actualPath.includes(href)
+  return actualPath.includes(url)
 }
 
 const Header: React.StatelessComponent<HeaderProps> = (props: HeaderProps) => {
@@ -34,7 +35,7 @@ const Header: React.StatelessComponent<HeaderProps> = (props: HeaderProps) => {
   return (
     <Head style={{ zIndex: 500 }}>
       <Link
-        to={`/${translationCode}`}
+        to={`/${translationCode}/`}
         className="tc-logo"
         style={{
           float: "left",
@@ -70,7 +71,7 @@ const Header: React.StatelessComponent<HeaderProps> = (props: HeaderProps) => {
                   linktag = <a href={element.href}>{element.label}</a>
                 } else {
                   linktag = (
-                    <Link to={`/${translationCode}/${element.href}`}>
+                    <Link to={`/${translationCode}${element.href}`}>
                       {element.label}
                     </Link>
                   )
@@ -78,9 +79,12 @@ const Header: React.StatelessComponent<HeaderProps> = (props: HeaderProps) => {
                 return (
                   <Menu.Item
                     key={
-                      activeLink(element.href, props_.location.pathname)
+                      activeLink(
+                        `${translationCode}${element.href}`,
+                        props_.location.pathname
+                      )
                         ? "active"
-                        : Math.random()
+                        : element.href
                     }
                   >
                     {linktag}

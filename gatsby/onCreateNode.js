@@ -2,6 +2,7 @@
 // Set URL with relativePath in /content folder
 
 const langFileRegex = /i18n[/\\]([a-z]{2})[/\\].*/g
+const { repository } = require("../package.json")
 
 // select templates according to slug (=path) generated.
 const selectTemplate = slug => {
@@ -17,7 +18,7 @@ const selectTemplate = slug => {
 const onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === "MarkdownRemark") {
-    const { relativePath } = getNode(node.parent)
+    const { relativePath } = getNode(node.parent) // "i18n/en/community/contribute.md"
 
     const template = selectTemplate(relativePath)
 
@@ -31,6 +32,11 @@ const onCreateNode = ({ node, getNode, actions }) => {
     slug = slug.replace("/i18n", "")
 
     const isFourOFour = slug.includes("404.html")
+
+    const gitLink = repository.replace(
+      ".git",
+      `/tree/develop/content/${relativePath}`
+    )
 
     createNodeField({
       node,
@@ -59,6 +65,12 @@ const onCreateNode = ({ node, getNode, actions }) => {
       node,
       name: "template",
       value: template,
+    })
+
+    createNodeField({
+      node,
+      name: "gitLink",
+      value: gitLink,
     })
   }
 }
