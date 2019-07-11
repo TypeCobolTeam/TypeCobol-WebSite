@@ -1,9 +1,9 @@
 {
-  "name": "typecobolteam.github.io",
-  "version": "0.0.1",
+  "name": "typecobol-website",
+  "version": "0.1.0",
   "description": "TypeCobolTeam's Website",
   "main": "n/a",
-  "repository": "https://github.com/TypeCobolTeam/typecobolteam.github.io.git",
+  "repository": "https://github.com/TypeCobolTeam/TypeCobol-WebSite.git",
   "author": "TypeCobolTeam <typecobol@e-i.com>",
   "license": "CeCILL-C",
   "private": true,
