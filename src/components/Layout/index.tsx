@@ -90,7 +90,7 @@ const CLayout: React.StatelessComponent<CLayoutProps> = (
                   </Content>
                 </Layout>
               )}
-              {showFooter && <Footer />}
+              {showFooter && <Footer lang={translationCode} />}
             </Layout>
           </Layout>
         </Layout>

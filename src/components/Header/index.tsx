@@ -9,7 +9,6 @@ import { current } from "@utils/versions"
 import LanguageSwitcher from "@components/LanguageSwitcher"
 
 const logo = require("@images/logo.svg")
-const NavbarYml: NavElement[] = require("@content/navbar.yml")
 
 const Head = Layout.Header
 
@@ -54,6 +53,7 @@ const Header: React.StatelessComponent<HeaderProps> = (props: HeaderProps) => {
       </Link>
       <Location>
         {props_ => {
+          const NavbarYml = require(`../../../content/i18n/${translationCode}/navbar.yml`) // eslint-disable-line
           return (
             <Menu
               theme="dark"

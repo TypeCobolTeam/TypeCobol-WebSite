@@ -1,6 +1,11 @@
 const { resolve } = require("path")
 
-const defaultlangKey = "en"
+const fs = require("fs")
+const yaml = require("js-yaml")
+const langs = yaml.safeLoad(
+  fs.readFileSync("content/i18n/languages.yml", "utf8")
+)
+const defaultlangKey = langs[0].tag
 
 const createPage = async ({ graphql, actions }) => {
   // eslint-disable-next-line no-shadow
@@ -73,6 +78,8 @@ const createPage = async ({ graphql, actions }) => {
         isPermanent: true,
         redirectInBrowser: true,
       })
+      // eslint-disable-next-line no-console
+      console.log(`${fromPath} --> ${slug}`)
     }
 
     let fromPath = slug.replace(".html", "")
@@ -83,6 +90,8 @@ const createPage = async ({ graphql, actions }) => {
         isPermanent: true,
         redirectInBrowser: true,
       })
+      // eslint-disable-next-line no-console
+      console.log(`${fromPath} --> ${slug}`)
     }
 
     // allow a redirect_form meta tag in pages
@@ -96,15 +105,10 @@ const createPage = async ({ graphql, actions }) => {
           isPermanent: true,
           redirectInBrowser: true,
         })
+        // eslint-disable-next-line no-console
+        console.log(`${fromPath} --> ${slug}`)
       })
     }
-    fromPath = "/"
-    createRedirect({
-      fromPath,
-      toPath: `/${defaultlangKey}/`,
-      isPermanent: true,
-      redirectInBrowser: true,
-    })
   })
 }
 
