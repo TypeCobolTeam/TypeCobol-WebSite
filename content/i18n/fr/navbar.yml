@@ -1,0 +1,14 @@
+#
+#   Header navbar config file
+#
+#   - label: hkk1      <- string for link title
+#     href: /          <- internal or external url
+#
+#
+
+- label: Accueil
+  href: /
+- label: Communauté
+  href: /community
+- label: Documentation
+  href: /docs

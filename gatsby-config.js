@@ -1,6 +1,6 @@
 let options
 
-if (process.env.BUILD_HTML) {
+if (process.env.ZIP) {
   options = ["gatsby-plugin-no-javascript"]
 } else {
   options = [
@@ -37,6 +37,7 @@ module.exports = {
   plugins: [
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sharp",
+    "gatsby-plugin-netlify",
     {
       resolve: "gatsby-source-filesystem",
       options: {

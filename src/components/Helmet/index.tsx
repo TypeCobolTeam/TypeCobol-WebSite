@@ -1,10 +1,17 @@
 import * as React from "react"
 import Helmet from "react-helmet"
 
-const CHelmet: React.StatelessComponent = () => {
+interface CHelmetProps {
+  title: string
+  lang: string
+}
+
+const CHelmet: React.StatelessComponent<CHelmetProps> = (
+  props: CHelmetProps
+) => {
+  const { title, lang } = props
   return (
     <Helmet
-      encodeSpecialCharacters
       defaultTitle="TypeCobol"
       titleTemplate="TypeCobol - %s"
       meta={[
@@ -21,7 +28,10 @@ const CHelmet: React.StatelessComponent = () => {
           content: "website",
         },
       ]}
-    />
+    >
+      {title !== "TypeCobol" && <title>{title}</title>}
+      <html lang={lang} />
+    </Helmet>
   )
 }
 

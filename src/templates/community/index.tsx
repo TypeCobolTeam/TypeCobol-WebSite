@@ -6,13 +6,15 @@ import processMarkdownHTML from "@utils/processMarkdownHTML"
 import { WindowLocation } from "@reach/router"
 import Title from "antd/lib/typography/Title"
 
-const NavigationYml = require("@community/navigation.yml")
-
 interface CommunityTemplateProps {
   data: {
     markdownRemark: {
       frontmatter: {
         title: string
+      }
+      fields: {
+        translationCode: string
+        gitLink: string
       }
       html: string
     }
@@ -26,6 +28,10 @@ export const pageQuery = graphql`
       frontmatter {
         title
       }
+      fields {
+        translationCode
+        gitLink
+      }
       html
     }
   }
@@ -34,15 +40,27 @@ export const pageQuery = graphql`
 const CommunityTemplate: React.StatelessComponent<CommunityTemplateProps> = (
   props: CommunityTemplateProps
 ) => {
-  const { data, location } = props
-  const { html, frontmatter } = data.markdownRemark
-  const { title } = frontmatter
+  const {
+    data: {
+      markdownRemark: {
+        html,
+        frontmatter: { title },
+        fields: { translationCode, gitLink },
+      },
+    },
+    location,
+  } = props
+  // eslint-disable-next-line
+  const NavigationYml = require(`../../../content/i18n/${translationCode}/community/navigation.yml`)
   return (
     <Layout
       showFooter
       showHeader
       sideNavigation={NavigationYml}
+      navPrefix="community"
       Breadcrumb={{ location, label: title }}
+      translationCode={translationCode}
+      gitLink={gitLink}
     >
       <Title style={{ fontSize: "2.5em" }}>{title}</Title>
       <div

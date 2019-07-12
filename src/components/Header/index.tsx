@@ -6,9 +6,9 @@ import { Layout, Menu, Icon } from "antd"
 import "./index.less"
 import { Location } from "@reach/router"
 import { current } from "@utils/versions"
+import LanguageSwitcher from "@components/LanguageSwitcher"
 
 const logo = require("@images/logo.svg")
-const NavbarYml: NavElement[] = require("@content/navbar.yml")
 
 const Head = Layout.Header
 
@@ -18,18 +18,24 @@ export interface NavElement {
   color?: any
 }
 
-const activeLink = (href: string, actualPath: string) => {
-  if (href === "/") {
-    return href === actualPath
-  }
-  return actualPath.includes(href)
+interface HeaderProps {
+  translationCode: string
 }
 
-const Header: React.StatelessComponent = () => {
+const activeLink = (href: string, actualPath: string) => {
+  const url = href.startsWith("/") ? href : `/${href}`
+  if (url.endsWith("/")) {
+    return url === actualPath
+  }
+  return actualPath.includes(url)
+}
+
+const Header: React.StatelessComponent<HeaderProps> = (props: HeaderProps) => {
+  const { translationCode } = props
   return (
     <Head style={{ zIndex: 500 }}>
       <Link
-        to="/"
+        to={`/${translationCode}/`}
         className="tc-logo"
         style={{
           float: "left",
@@ -47,7 +53,8 @@ const Header: React.StatelessComponent = () => {
         />
       </Link>
       <Location>
-        {props => {
+        {props_ => {
+          const NavbarYml = require(`../../../content/i18n/${translationCode}/navbar.yml`) // eslint-disable-line
           return (
             <Menu
               theme="dark"
@@ -63,20 +70,30 @@ const Header: React.StatelessComponent = () => {
                 ) {
                   linktag = <a href={element.href}>{element.label}</a>
                 } else {
-                  linktag = <Link to={element.href}>{element.label}</Link>
+                  linktag = (
+                    <Link to={`/${translationCode}${element.href}`}>
+                      {element.label}
+                    </Link>
+                  )
                 }
                 return (
                   <Menu.Item
                     key={
-                      activeLink(element.href, props.location.pathname)
+                      activeLink(
+                        `${translationCode}${element.href}`,
+                        props_.location.pathname
+                      )
                         ? "active"
-                        : Math.random()
+                        : element.href
                     }
                   >
                     {linktag}
                   </Menu.Item>
                 )
               })}
+              <Menu.Item key="lang" className="lang" style={{ float: "right" }}>
+                <LanguageSwitcher tag={translationCode} />
+              </Menu.Item>
               <Menu.Item
                 key="github"
                 style={{ float: "right", fontSize: 30, padding: 0 }}
@@ -91,7 +108,7 @@ const Header: React.StatelessComponent = () => {
               </Menu.Item>
               <Menu.Item
                 key={
-                  activeLink("/versions", props.location.pathname)
+                  activeLink("/versions", props_.location.pathname)
                     ? "active"
                     : "versions"
                 }

@@ -3,10 +3,16 @@ import * as React from "react"
 import { Layout } from "antd"
 
 import "./index.less"
+import FooterLoader from "./loader"
 
 const { Footer } = Layout
 
-const CFooter: React.StatelessComponent = () => {
+interface FooterProps {
+  lang: string
+}
+
+const CFooter: React.FunctionComponent<FooterProps> = (props: FooterProps) => {
+  const { lang } = props
   return (
     <Footer
       className="tc-footer"
@@ -14,7 +20,7 @@ const CFooter: React.StatelessComponent = () => {
         textAlign: "center",
       }}
     >
-      <a href="/">Copyright TypeCobol 2019</a>
+      <FooterLoader lang={lang} />
     </Footer>
   )
 }

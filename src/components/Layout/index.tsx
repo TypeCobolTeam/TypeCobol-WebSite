@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { Layout, ConfigProvider } from "antd"
+import { Layout, ConfigProvider, Icon } from "antd"
 
 import Footer from "@components/Footer"
 import HelmetInit from "@components/Helmet"
@@ -10,8 +10,6 @@ import { WindowLocation } from "@reach/router"
 import "./index.less"
 
 import { Breadcrumb as GBreadcrumb } from "gatsby-plugin-breadcrumb"
-import Helmet from "react-helmet"
-
 const { Content } = Layout
 
 interface CLayoutProps {
@@ -24,9 +22,12 @@ interface CLayoutProps {
     location: WindowLocation
     label: string
   }
+  translationCode?: string
+  navPrefix?: string
+  gitLink?: string
 }
 
-const CLayout: React.StatelessComponent<CLayoutProps> = (
+const CLayout: React.FunctionComponent<CLayoutProps> = (
   props: CLayoutProps
 ) => {
   const {
@@ -36,22 +37,29 @@ const CLayout: React.StatelessComponent<CLayoutProps> = (
     customContentLayout,
     Breadcrumb,
     children,
+    translationCode,
+    navPrefix,
+    gitLink,
   } = props
+  const langCode = translationCode || "en"
   return (
     <>
-      <HelmetInit />
-      {Breadcrumb.location.pathname !== "/" && (
-        <Helmet title={Breadcrumb.label} />
-      )}
+      <HelmetInit title={Breadcrumb.label} lang={langCode} />
       <ConfigProvider prefixCls="tc">
         <Layout>
-          {showHeader && <Header />}
+          {showHeader && <Header translationCode={langCode} />}
           <Layout
             style={{
               flexDirection: sideNavigation ? "row" : "column",
             }}
           >
-            {sideNavigation && <SideNavigation navigation={sideNavigation} />}
+            {sideNavigation && (
+              <SideNavigation
+                prefix={navPrefix || ""}
+                activeLang={langCode}
+                navigation={sideNavigation}
+              />
+            )}
             <Layout>
               {customContentLayout ? (
                 children
@@ -79,12 +87,25 @@ const CLayout: React.StatelessComponent<CLayoutProps> = (
                         padding: 24,
                       }}
                     >
+                      {gitLink && (
+                        <a
+                          href={gitLink}
+                          style={{
+                            width: "100%",
+                            float: "right",
+                            textAlign: "right",
+                          }}
+                        >
+                          Edit on Github
+                          <Icon type="github" style={{ marginLeft: 5 }} />
+                        </a>
+                      )}
                       {children}
                     </div>
                   </Content>
                 </Layout>
               )}
-              {showFooter && <Footer />}
+              {showFooter && <Footer lang={translationCode} />}
             </Layout>
           </Layout>
         </Layout>

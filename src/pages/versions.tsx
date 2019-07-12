@@ -5,8 +5,6 @@ import { Layout as antdLayout, Typography } from "antd"
 import { WindowLocation } from "@reach/router"
 import { versions } from "@utils/versions"
 
-import "./index.less"
-
 const { Title } = Typography
 const { Content } = antdLayout
 
@@ -27,6 +25,7 @@ const VersionsPage: React.StatelessComponent<VersionsPageProps> = (
           label: "Versions",
           location,
         }}
+        translationCode="en"
       >
         <Content>
           <Title level={1} style={{ marginBottom: 40 }}>
@@ -35,7 +34,7 @@ const VersionsPage: React.StatelessComponent<VersionsPageProps> = (
           {Object.entries(versions).map(elem => {
             const [version, info] = elem
             return (
-              <div style={{ padding: "10px 0", fontSize: 15 }}>
+              <div key={version} style={{ padding: "10px 0", fontSize: 15 }}>
                 <Title level={2}>{version}</Title>
                 <ul>
                   <li>

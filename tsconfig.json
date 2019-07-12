@@ -4,34 +4,15 @@
     "module": "commonjs",
     "target": "esnext",
     "jsx": "react",
-    "lib": [
-      "dom",
-      "esnext"
-    ],
+    "lib": ["dom", "esnext"],
     "baseUrl": ".",
     "paths": {
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@content/*": [
-        "content/*"
-      ],
-      "@utils/*": [
-        "src/utils/*"
-      ],
-      "@images/*": [
-        "content/images/*"
-      ],
-      "@community/*": [
-        "content/community/*"
-      ],
-      "@docs/*": [
-        "content/docs/*"
-      ]
+      "@components/*": ["src/components/*"],
+      "@content/*": ["content/*"],
+      "@utils/*": ["src/utils/*"],
+      "@images/*": ["content/images/*"]
     },
     "esModuleInterop": true
   },
-  "include": [
-    "./src/**/*"
-  ]
+  "include": ["./src/**/*", "./content/**/*.tsx"]
 }

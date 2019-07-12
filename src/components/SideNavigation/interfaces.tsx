@@ -2,7 +2,7 @@ interface NavigationBasics {
   color?: any
   textColor?: any
   group?: string
-  items?: Navigations
+  items?: Navigation[]
   item?: string
   href?: string
   icon?: string
@@ -20,8 +20,9 @@ export type Navigation = RequireAtLeastOne<
   NavigationBasics,
   "group" | "item" | "divider"
 >
-export type Navigations = Navigation[]
 
 export interface SideNavProps {
-  navigation?: Navigation[]
+  activeLang: string
+  prefix: string
+  navigation: Navigation[]
 }

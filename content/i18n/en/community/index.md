@@ -1,7 +1,6 @@
 ---
 id: index
 title: Community
-redirectFrom: /homeblabla
 ---
 
 # Markdown: Syntax

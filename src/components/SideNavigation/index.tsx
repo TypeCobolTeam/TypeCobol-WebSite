@@ -2,14 +2,14 @@ import * as React from "react"
 
 import { Layout, Menu } from "antd"
 import { Location } from "@reach/router"
-import { Navigations, SideNavProps } from "./interfaces"
+import { SideNavProps } from "./interfaces"
 import ItemRenderer from "./item"
 const { Sider } = Layout
 
-const SideNavigation: React.StatelessComponent<SideNavProps> = (
+const SideNavigation: React.FunctionComponent<SideNavProps> = (
   props: SideNavProps
 ) => {
-  const navigation: Navigations = props.navigation || []
+  const { navigation, activeLang, prefix } = props
   const width: number = 300
   return (
     <>
@@ -40,9 +40,18 @@ const SideNavigation: React.StatelessComponent<SideNavProps> = (
               }}
               className="hideScroll"
             >
-              {navigation.map((_element, _index) =>
-                ItemRenderer(_element, _index, locationProps.location.pathname)
-              )}
+              {navigation.map((_element, _index) => {
+                const {
+                  location: { pathname },
+                } = locationProps
+                return ItemRenderer(
+                  _element,
+                  _index,
+                  pathname,
+                  activeLang,
+                  prefix
+                )
+              })}
             </Menu>
           </Sider>
         )}
