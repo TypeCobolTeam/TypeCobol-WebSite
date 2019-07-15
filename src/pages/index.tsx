@@ -5,7 +5,7 @@ import Layout from "@components/Layout"
 
 import { Layout as antdLayout } from "antd"
 import { WindowLocation } from "@reach/router"
-import HomepageLoader from "@components/HomepageLoader"
+import HomepageLoader from "@components/CustomPagesLoader/Home"
 
 const { Content } = antdLayout
 
@@ -61,7 +61,7 @@ const IndexPage: React.StatelessComponent<IndexPageProps> = (
       >
         <Content
           style={{
-            height: "calc(100vh - (69px + 64px))",
+            minHeight: "calc(100vh - 154px)",
           }}
         >
           <HomepageLoader

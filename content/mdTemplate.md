@@ -3,7 +3,7 @@ title: This a template
 redirectFrom:
   - /wow
   - /woooow
-disablePage: true
+disable: true
 ---
 
 ### This a template. Wow.

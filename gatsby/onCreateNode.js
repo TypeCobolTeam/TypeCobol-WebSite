@@ -1,16 +1,16 @@
-// Adds slug field for URL in page creation
-// Set URL with relativePath in /content folder
-
-const langFileRegex = /i18n[/\\]([a-z]{2})[/\\].*/g
 const { repository } = require("../package.json")
 
-// select templates according to slug (=path) generated.
+const langFileRegex = /i18n[/\\]([a-z]{2})[/\\].*/g
+
 const selectTemplate = slug => {
-  if (slug.includes("community")) {
+  if (slug.includes("community/")) {
     return "src/templates/community/index.tsx"
   }
-  if (slug.includes("docs")) {
+  if (slug.includes("docs/")) {
     return "src/templates/docs/index.tsx"
+  }
+  if (slug.includes("blog/")) {
+    return "src/templates/blog/index.tsx"
   }
   return "src/templates/single/index.tsx"
 }
@@ -31,8 +31,6 @@ const onCreateNode = ({ node, getNode, actions }) => {
     slug = slug.replace("/index.html", "")
     slug = slug.replace("/i18n", "")
 
-    const isFourOFour = slug.includes("404.html")
-
     const gitLink = repository.replace(
       ".git",
       `/tree/develop/content/${relativePath}`
@@ -44,17 +42,6 @@ const onCreateNode = ({ node, getNode, actions }) => {
       value: slug,
     })
 
-    createNodeField({
-      node,
-      name: "isFourOFour",
-      value: isFourOFour,
-    })
-
-    createNodeField({
-      node,
-      name: "isTranslation",
-      value: isTranslation,
-    })
     createNodeField({
       node,
       name: "translationCode",

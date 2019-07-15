@@ -1,5 +1,6 @@
 /* eslint-disable consistent-return */
 const os = require("os")
+
 const path = require("path")
 const createZip = require("./create-zip")
 
