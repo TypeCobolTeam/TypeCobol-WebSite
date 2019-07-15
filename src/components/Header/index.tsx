@@ -8,7 +8,7 @@ import { Location } from "@reach/router"
 import { current } from "@utils/versions"
 import LanguageSwitcher from "@components/LanguageSwitcher"
 
-const logo = require("@images/logo.svg")
+const logo = require("@assets/logo.svg")
 
 const Head = Layout.Header
 

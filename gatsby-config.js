@@ -15,7 +15,7 @@ if (process.env.ZIP) {
         background_color: "#f0f2f5",
         theme_color: "#ffffff",
         display: "standalone",
-        icon: "content/images/favicon.png",
+        icon: "content/assets/favicon.png",
       },
     },
     {

@@ -1,73 +1,49 @@
 const { resolve } = require("path")
-
 const fs = require("fs")
-const yaml = require("js-yaml")
-const langs = yaml.safeLoad(
-  fs.readFileSync("content/i18n/languages.yml", "utf8")
-)
+const { safeLoad } = require("js-yaml")
+const langs = safeLoad(fs.readFileSync("content/i18n/languages.yml", "utf8"))
 const defaultlangKey = langs[0].tag
 
 const createPage = async ({ graphql, actions }) => {
-  // eslint-disable-next-line no-shadow
-  const { createPage, createRedirect } = actions
+  const { createPage, createRedirect } = actions // eslint-disable-line no-shadow
 
-  // query all content from /content/
-  const allMarkdownRemark = await graphql(
-    `
-      {
-        allMarkdownRemark(limit: 1000) {
-          edges {
-            node {
-              id
-              fields {
-                slug
-                isTranslation
-                translationCode
-                template
-                isFourOFour
-              }
-              frontmatter {
-                disablePage
-                redirectFrom
-              }
+  const allMarkdownRemark = await graphql(`
+    {
+      allMarkdownRemark(limit: 1000) {
+        edges {
+          node {
+            id
+            fields {
+              slug
+              translationCode
+              template
+            }
+            frontmatter {
+              disable
+              redirectFrom
             }
           }
         }
       }
-    `
-  )
+    }
+  `)
 
   allMarkdownRemark.data.allMarkdownRemark.edges.forEach(edge => {
-    const {
-      slug,
-      isTranslation,
-      translationCode,
-      template,
-      isFourOFour,
-    } = edge.node.fields
+    const { slug, translationCode, template } = edge.node.fields
     const { id, frontmatter } = edge.node
-    const { disablePage } = frontmatter
+    const { disable } = frontmatter
+
+    if (!slug || disable || template === "") return
 
     const redirectHereFrom = frontmatter.redirectFrom
-
-    if (!slug || disablePage || template === "") return
-
-    let FourOFourOptions = {}
-    if (isFourOFour && isTranslation) {
-      FourOFourOptions = {
-        matchPath: `/${defaultlangKey}/*`,
-      }
-    }
 
     createPage({
       path: slug,
       component: resolve(template),
       context: {
-        slug,
         id,
-        translation: isTranslation ? translationCode : defaultlangKey,
+        translation: translationCode !== "" ? translationCode : defaultlangKey,
       },
-      ...FourOFourOptions,
     })
 
     if (translationCode === defaultlangKey) {

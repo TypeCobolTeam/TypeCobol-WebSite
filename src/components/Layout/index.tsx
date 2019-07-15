@@ -77,13 +77,12 @@ const CLayout: React.FunctionComponent<CLayoutProps> = (
                     style={{
                       background: "#fff",
                       margin: 0,
-                      minHeight: 280,
                       padding: 24,
                     }}
                   >
                     <div
                       style={{
-                        minHeight: "calc(100vh - 234px)",
+                        minHeight: "calc(100vh - 279px)",
                         padding: 24,
                       }}
                     >
