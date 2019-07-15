@@ -13,6 +13,7 @@ yarn-error.log
 
 # Build directory
 /public
+/static
 .DS_Store
 
 .history

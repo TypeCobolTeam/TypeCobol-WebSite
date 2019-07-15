@@ -8,15 +8,15 @@
   "license": "CeCILL-C",
   "private": true,
   "scripts": {
-    "zip": "export ZIP=true || set ZIP=true&& yarn clean && yarn test && yarn clean && yarn gbuild && yarn clean",
-    "build": "yarn clean && yarn test && yarn clean && yarn gbuild",
-    "zip_and_build": "yarn zip && yarn build",
-    "gbuild": "gatsby build",
+    "zip": "export ZIP=true || set ZIP=true&& yarn build",
+    "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "develop": "gatsby develop",
     "eslint": "eslint . --ext .tsx,.ts.jsx,.js",
-    "test": "jest --config ./jest/jest.config.js"
+    "test": "jest --config ./jest/jest.config.js",
+    "netlify:production": "yarn zip && yarn clean && yarn test && yarn build",
+    "netlify:default": "yarn test && yarn build"
   },
   "dependencies": {
     "@reach/router": "^1.2.1",

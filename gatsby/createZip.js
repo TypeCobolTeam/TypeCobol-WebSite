@@ -39,7 +39,6 @@ const createZip = settings => {
       return output
     })
 
-    // Create Archive
     fs.mkdirSync(path.join(process.cwd(), "static"), { recursive: true })
     const archiveOutput = fs.createWriteStream(
       path.join(process.cwd(), "static", zipFilename)
