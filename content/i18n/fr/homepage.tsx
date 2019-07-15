@@ -6,7 +6,7 @@ import { WindowLocation } from "@reach/router"
 
 const { Title } = Typography
 
-const logo = require("@images/logo.svg")
+const logo = require("@assets/logo.svg")
 
 interface HomepageProps {
   title: string

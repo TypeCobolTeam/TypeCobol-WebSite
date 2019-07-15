@@ -10,7 +10,7 @@
       "@components/*": ["src/components/*"],
       "@content/*": ["content/*"],
       "@utils/*": ["src/utils/*"],
-      "@images/*": ["content/images/*"]
+      "@assets/*": ["content/assets/*"]
     },
     "esModuleInterop": true
   },
