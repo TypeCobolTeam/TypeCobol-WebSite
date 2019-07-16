@@ -1,12 +1,12 @@
 [build]
   publish = "public/"
-  command = "yarn deploy"
+  command = "yarn netlify:default"
 
 # Production context: all deploys from the Production branch set in your site's 
 # deploy contexts will inherit these settings.
 [context.production]
   environment = { NODE_ENV = "production", NODE_VERSION = "10" }
-  command = "yarn zip_and_deploy"
+  command = "yarn netlify:production"
 
 # Deploy Preview context: all deploys resulting from a pull/merge request will 
 # inherit these settings.
