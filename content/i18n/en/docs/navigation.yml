@@ -39,4 +39,10 @@
   items:
     - item: Introduction
       href: language/detailed-rules/
+    - item: TYPE & TYPEDEF clauses
+      href: language/detailed-rules/type-typedef-clauses.html
+    - item: UNSAFE clause
+      href: language/detailed-rules/unsafe-clause.html
+    - item: ":: Operator"
+      href: language/detailed-rules/name-qualification-syntax.html
 # stopped at detail rules atm WIP
