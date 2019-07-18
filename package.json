@@ -15,7 +15,7 @@
     "develop": "gatsby develop",
     "eslint": "eslint . --ext .tsx,.ts.jsx,.js",
     "test": "jest --config ./jest/jest.config.js",
-    "netlify:production": "yarn zip && yarn clean && yarn test && yarn build",
+    "netlify:production": "yarn test && yarn zip && yarn clean && yarn build",
     "netlify:default": "yarn test && yarn build"
   },
   "dependencies": {
@@ -47,6 +47,7 @@
     "gatsby-remark-images": "^3.1.2",
     "gatsby-source-filesystem": "^2.0.38",
     "gatsby-transformer-remark": "^2.3.12",
+    "gray-matter": "^4.0.0",
     "js-yaml": "^3.13.1",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
@@ -75,6 +76,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.8.0",
     "jest-dom": "^3.5.0",
+    "jest-extended": "^0.11.2",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.2"
   }
