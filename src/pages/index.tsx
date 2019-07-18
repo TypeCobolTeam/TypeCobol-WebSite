@@ -7,6 +7,8 @@ import { Layout as antdLayout } from "antd"
 import { WindowLocation } from "@reach/router"
 import HomepageLoader from "@components/CustomPagesLoader/Home"
 
+import "./index.less"
+
 const { Content } = antdLayout
 
 interface IndexPageProps {
@@ -35,6 +37,34 @@ export const pageQuery = graphql`
   }
 `
 
+export interface SectionProps {
+  children: React.ReactNode
+  style?: React.CSSProperties
+  blue?: boolean
+}
+
+export const Section: React.FunctionComponent<SectionProps> = (
+  props: SectionProps
+) => {
+  const { children, style, blue } = props
+  return (
+    <section
+      style={{
+        height: "fit-content",
+        position: "relative",
+        zIndex: 3,
+        textAlign: "center",
+        padding: 50,
+        background: blue ? "#001529" : "#f0f2f5",
+        color: blue ? "white" : "inherit",
+        ...style,
+      }}
+    >
+      {children}
+    </section>
+  )
+}
+
 const IndexPage: React.StatelessComponent<IndexPageProps> = (
   props: IndexPageProps
 ) => {
@@ -60,8 +90,9 @@ const IndexPage: React.StatelessComponent<IndexPageProps> = (
         translationCode={translation}
       >
         <Content
+          className="homepage"
           style={{
-            minHeight: "calc(100vh - 154px)",
+            minHeight: "calc(100vh - 177px)",
           }}
         >
           <HomepageLoader

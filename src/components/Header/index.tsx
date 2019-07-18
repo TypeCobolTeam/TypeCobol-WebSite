@@ -5,7 +5,6 @@ import { Layout, Menu, Icon } from "antd"
 
 import "./index.less"
 import { Location } from "@reach/router"
-import { current } from "@utils/versions"
 import LanguageSwitcher from "@components/LanguageSwitcher"
 
 const logo = require("@assets/logo.svg")
@@ -33,25 +32,7 @@ const activeLink = (href: string, actualPath: string) => {
 const Header: React.StatelessComponent<HeaderProps> = (props: HeaderProps) => {
   const { translationCode } = props
   return (
-    <Head style={{ zIndex: 500 }}>
-      <Link
-        to={`/${translationCode}/`}
-        className="tc-logo"
-        style={{
-          float: "left",
-          height: "100%",
-        }}
-      >
-        <img
-          src={logo}
-          alt=""
-          style={{
-            height: "100%",
-            maxHeight: 40,
-            verticalAlign: "middle",
-          }}
-        />
-      </Link>
+    <Head style={{ zIndex: 500 }} className="navigation">
       <Location>
         {props_ => {
           const NavbarYml = require(`../../../content/i18n/${translationCode}/navbar.yml`) // eslint-disable-line
@@ -62,6 +43,26 @@ const Header: React.StatelessComponent<HeaderProps> = (props: HeaderProps) => {
               selectedKeys={["active"]}
               style={{ lineHeight: "64px" }}
             >
+              <Menu.Item key="lang" className="lang">
+                <Link
+                  to={`/${translationCode}/`}
+                  className="tc-logo"
+                  style={{
+                    float: "left",
+                    height: "100%",
+                  }}
+                >
+                  <img
+                    src={logo}
+                    alt=""
+                    style={{
+                      height: "100%",
+                      maxHeight: 40,
+                      verticalAlign: "middle",
+                    }}
+                  />
+                </Link>
+              </Menu.Item>
               {NavbarYml.map((element: NavElement) => {
                 let linktag: any
                 if (
@@ -91,9 +92,6 @@ const Header: React.StatelessComponent<HeaderProps> = (props: HeaderProps) => {
                   </Menu.Item>
                 )
               })}
-              <Menu.Item key="lang" className="lang" style={{ float: "right" }}>
-                <LanguageSwitcher tag={translationCode} />
-              </Menu.Item>
               <Menu.Item
                 key="github"
                 style={{ float: "right", fontSize: 30, padding: 0 }}
@@ -101,23 +99,22 @@ const Header: React.StatelessComponent<HeaderProps> = (props: HeaderProps) => {
                 <a
                   rel="noopener noreferrer"
                   target="_blank"
-                  href="https://github.com/TypeCobolTeam/TypeCobol"
+                  href="//github.com/TypeCobolTeam/TypeCobol"
                 >
                   <Icon type="github" style={{ fontSize: 30 }} />
                 </a>
               </Menu.Item>
-              <Menu.Item
-                key={
-                  activeLink("/versions", props_.location.pathname)
-                    ? "active"
-                    : "versions"
-                }
-                className="version"
-                style={{ float: "right" }}
-              >
-                <Link to="/versions">
-                  <span>{`v${current}`}</span>
-                </Link>
+              <Menu.Item key="lang" className="lang" style={{ float: "right" }}>
+                <LanguageSwitcher tag={translationCode} />
+              </Menu.Item>
+              <Menu.Item key="versions" style={{ float: "right" }}>
+                <a
+                  href="//github.com/TypeCobolTeam/TypeCobol/releases"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Changelog
+                </a>
               </Menu.Item>
             </Menu>
           )

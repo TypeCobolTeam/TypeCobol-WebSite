@@ -1,6 +1,6 @@
-- tag: fr
-  name: Français
-  completed: 0
 - tag: en
   name: English
   completed: 3
+- tag: fr
+  name: Français
+  completed: 1

@@ -33,12 +33,11 @@ const menu = actualLang => {
 const LanguageSwitcher: React.FunctionComponent<LanguageSwitcherProps> = (
   props: LanguageSwitcherProps
 ) => {
-  const tag = props.tag === "en" ? "us" : props.tag
   return (
     <Dropdown overlay={menu(props.tag)}>
       <span className="ant-dropdown-link">
-        {tag.toUpperCase()}
-        <Icon style={{ marginLeft: 5 }} type="global" />
+        {props.tag.toUpperCase()}
+        <Icon type="global" />
         <Icon type="down" />
       </span>
     </Dropdown>

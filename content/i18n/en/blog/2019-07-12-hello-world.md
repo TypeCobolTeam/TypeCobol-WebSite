@@ -1,6 +1,6 @@
 ---
 title: Hello World
-date: "2019-07-12T10:00.000Z"
+date: "2019-07-12T10:00:00.000Z"
 author: "NicolasStr_<nicolas@nicolasstr.eu>"
 short: >
   This is a very long sentence

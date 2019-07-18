@@ -2,7 +2,6 @@ import * as React from "react"
 import { graphql } from "gatsby"
 
 import Layout from "@components/Layout"
-import processMarkdownHTML from "@utils/processMarkdownHTML"
 import { WindowLocation } from "@reach/router"
 import Title from "antd/lib/typography/Title"
 
@@ -66,7 +65,7 @@ const DocsTemplate: React.StatelessComponent<DocsTemplateProps> = (
       <div
         // eslint-disable-next-line
         dangerouslySetInnerHTML={{
-          __html: processMarkdownHTML(html),
+          __html: html,
         }}
       />
     </Layout>

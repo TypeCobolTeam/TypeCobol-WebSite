@@ -1,6 +1,6 @@
 ---
 title: Bonjour, monde!
-date: "2019-07-12T10:00.000Z"
+date: "2019-07-12T10:00:00.000Z"
 author: "NicolasStr_<nicolas@nicolasstr.eu>"
 translator: "Wow<thisiswow@example.com>"
 short: >
