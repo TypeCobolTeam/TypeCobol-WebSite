@@ -1,6 +1,6 @@
-# typecobolteam.github.io
+# TypeCobol-Website
 
-[typecobolteam.github.io](https://typecobolteam.github.io) is the presentation Website for [@TypeCobolTeam](https://github.com/TypeCobolTeam)
+[typecobol.netlify.com](https://typecobol.netlify.com) is the presentation Website for [@TypeCobolTeam](https://github.com/TypeCobolTeam)
 
 ## Installation
 
