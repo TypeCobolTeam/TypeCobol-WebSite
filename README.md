@@ -10,13 +10,13 @@ Run `npm install` in a dev or production environment to install packages require
 
 ```bash
 # Run local in dev-mode
-yarn develop
+npm run develop
 # Build
-yarn build
+npm run build
 # Format (Prettier)
-yarn format
+npm run format
 # Run tests [WIP]
-yarn test
+npm run test
 ```
 
 ## Testing
