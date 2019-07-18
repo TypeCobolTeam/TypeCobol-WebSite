@@ -10,14 +10,11 @@ let wrapper
 let helmet
 
 beforeAll(() => {
-  wrapper = mount(<Helmet />)
+  wrapper = mount(<Helmet title="TypeCobol" lang="fr" />)
   helmet = Helm.peek()
 })
 
 describe("Helmet", () => {
-  it("renders correctly", () => {
-    expect(wrapper).toMatchSnapshot()
-  })
   it("sets typecobol as page title", () => {
     expect(helmet.title).toMatch(/typecobol/i)
   })

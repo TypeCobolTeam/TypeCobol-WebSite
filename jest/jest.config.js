@@ -21,7 +21,7 @@ module.exports = {
   testRegex: "(<rootDir>/__tests__/.*|(\\.|/)(test|spec))\\.([tj]sx?)$",
   moduleNameMapper: {
     "\\.(css|less)$": "identity-obj-proxy",
-    ...pathsToModuleNameMapper(compilerOptions.paths),
+    ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: "<rootDir>/" }),
   },
   testPathIgnorePatterns: ["node_modules", ".cache"],
   transformIgnorePatterns: ["node_modules/(?!(gatsby)/)"],
@@ -29,6 +29,13 @@ module.exports = {
   modulePaths: ["<rootDir>"],
   moduleDirectories: [".", "src", "node_modules"],
   rootDir: "../",
-  setupFilesAfterEnv: ["<rootDir>/jest/setup-test-env.ts"],
+  setupFilesAfterEnv: ["<rootDir>/jest/setup-test-env.ts", "jest-extended"],
   roots: ["<rootDir>", "<rootDir>/jest/"],
+  globals: {
+    "ts-jest": {
+      diagnostics: {
+        warnOnly: true,
+      },
+    },
+  },
 }
