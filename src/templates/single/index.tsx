@@ -1,4 +1,3 @@
-import processMarkdownHTML from "@utils/processMarkdownHTML"
 import { graphql } from "gatsby"
 import * as React from "react"
 import Layout from "@components/Layout"
@@ -55,7 +54,7 @@ const SingleTemplate: React.StatelessComponent<SingleTemplateProps> = (
       <div
         // eslint-disable-next-line
         dangerouslySetInnerHTML={{
-          __html: processMarkdownHTML(html),
+          __html: html,
         }}
       />
     </Layout>

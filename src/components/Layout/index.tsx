@@ -25,6 +25,7 @@ interface CLayoutProps {
   translationCode?: string
   navPrefix?: string
   gitLink?: string
+  style?: React.CSSProperties
 }
 
 const CLayout: React.FunctionComponent<CLayoutProps> = (
@@ -40,13 +41,14 @@ const CLayout: React.FunctionComponent<CLayoutProps> = (
     translationCode,
     navPrefix,
     gitLink,
+    style,
   } = props
   const langCode = translationCode || "en"
   return (
     <>
       <HelmetInit title={Breadcrumb.label} lang={langCode} />
       <ConfigProvider prefixCls="tc">
-        <Layout>
+        <Layout style={{ ...style }}>
           {showHeader && <Header translationCode={langCode} />}
           <Layout
             style={{
