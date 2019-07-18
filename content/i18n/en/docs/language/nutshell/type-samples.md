@@ -1,13 +1,13 @@
 ---
-title: Type Samples
+title: Type samples
 ---
 
-# Types
-Here's a sample type created with TypeCobol.
+Here's a sample of typedef created with TypeCobol.
+
 ```cobol
        01 DateJulian TYPEDEF STRICT PUBLIC.
          10 YYYY PIC 9(04).
-         10 DDD  PIC 9(03).    
+         10 DDD  PIC 9(03).
        01 DateDB2 TYPEDEF STRICT PUBLIC.
          10  YYYY   PIC 9(04).
          10  filler PIC X value '-'.

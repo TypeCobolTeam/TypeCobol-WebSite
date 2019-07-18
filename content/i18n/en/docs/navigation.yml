@@ -1,7 +1,7 @@
+- item: Welcome
+  href: /
 - group: Introduction
   items:
-    - item: The TypeCobol Initiative
-      href: introduction/
     - item: License
       href: introduction/license.html
     - item: Roadmap
@@ -11,29 +11,32 @@
     - item: Limitations of our Cobol parser
       href: introduction/limitations.html
 - divider: TypeCobol language
-- group: TCOB in a nutshell
-  icon: fire
+- group: In a nutshell
   items:
     - item: Types
-      href: language/types/nutshell.html
+      href: language/nutshell/types.html
     - item: Type samples
-      href: language/types/samples.html
+      href: language/nutshell/type-samples.html
     - item: Procedures & Functions
-      href: language/procedures-and-functions.html
+      href: language/nutshell/procedures-and-functions.html
 - group: TypeCobol concepts
   items:
     - item: Types
-      href: language/types/
+      href: language/concepts/types/
     - item: Boolean Type
-      href: language/types/boolean.html
+      href: language/concepts/types/boolean.html
     - item: Date Type
-      href: language/types/date.html
+      href: language/concepts/types/date.html
     - item: ":: operator"
-      href: language/name-qualification.html
+      href: language/concepts/name-qualification.html
     - item: Procedures & Functions
-      href: language/procedures-and-functions_2.html
+      href: language/concepts/procedures-and-functions.html
     - item: Namespaces
-      href: language/namespaces.html
+      href: language/concepts/namespaces.html
     - item: Error
-      href: language/errors.html
+      href: language/concepts/errors.html
+- group: Detailed Rules
+  items:
+    - item: Introduction
+      href: language/detailed-rules/
 # stopped at detail rules atm WIP
