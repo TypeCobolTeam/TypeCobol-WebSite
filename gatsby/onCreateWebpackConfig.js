@@ -1,7 +1,7 @@
 const { resolve } = require("path")
 const eslint = require("eslint")
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
-const CleanCSSPlugin = require("less-plugin-clean-css")
+const tsImportPluginFactory = require("ts-import-plugin")
 
 const onCreateWebpackConfig = ({ loaders, stage, actions }) => {
   const jsLoader = loaders.js()
@@ -12,7 +12,6 @@ const onCreateWebpackConfig = ({ loaders, stage, actions }) => {
   const lessLoader = {
     loader: "less-loader",
     options: {
-      plugins: [new CleanCSSPlugin({ advanced: true })],
       modifyVars: {
         hack: `true; @import "${resolve(
           process.cwd(),
@@ -51,10 +50,25 @@ const onCreateWebpackConfig = ({ loaders, stage, actions }) => {
     use: [eslintLoader],
   }
 
+  const tsLoader = {
+    loader: "ts-loader",
+    options: {
+      transpileOnly: true,
+      getCustomTransformers: () => ({
+        before: [
+          tsImportPluginFactory({
+            libraryName: "antd",
+            libraryDirectory: "es",
+            style: true,
+          }),
+        ],
+      }),
+    },
+  }
   const tsRule = {
     test: /\.tsx?$/,
     exclude: /node_modules/,
-    use: [jsLoader, "ts-loader"],
+    use: [jsLoader, tsLoader],
   }
 
   /**

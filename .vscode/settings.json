@@ -11,7 +11,7 @@
   "eslint.enable": true,
   "jest.restartJestOnSnapshotUpdate": true,
   "jest.pathToConfig": "",
-  "jest.pathToJest": "yarn test -- -u",
+  "jest.pathToJest": "npm run test -- -u",
   "editor.formatOnPaste": true,
   "explorer.sortOrder": "type",
   "workbench.editor.highlightModifiedTabs": true,
