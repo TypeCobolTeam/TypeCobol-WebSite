@@ -13,8 +13,6 @@ Run `npm install` in a dev or production environment to install packages require
 npm run develop
 # Build
 npm run build
-# Format (Prettier)
-npm run format
 # Run tests
 npm run test
 ```
@@ -23,6 +21,9 @@ npm run test
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
+
+See documentation in the [Wiki here](https://github.com/TypeCobolTeam/TypeCobol-WebSite/wiki)
+
 
 ## License
 
