@@ -24,6 +24,7 @@ const onPostBuild = () => {
     .a(/<section(.|\n)*?>|<\/?section>/) // remove section tag
     .a(/<main(.|\n)*?>|<\/?main>/) // remove main tag
     .a(/<meta name="generator" (.|\n)*?>/) // remove generator tag
+    .a(/<a[^>]*>((.?|\n?)+?)Edit on Github((.?|\n?)+?)<\/a>/) // remove all "edit on github" links
   // .a(/(?<=")\/(?=static\/)/) // we're using static located in the current folder (to enable only if asked)
 
   const tempFolder = path.join(
