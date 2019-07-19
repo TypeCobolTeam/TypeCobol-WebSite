@@ -30,7 +30,7 @@ class FooterLoader extends React.Component<
   render() {
     const { module } = this.state
     if (module) return React.createElement(module)
-    return <p>done</p>
+    return <p>Loading...</p>
   }
 }
 
