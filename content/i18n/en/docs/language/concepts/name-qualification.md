@@ -2,48 +2,49 @@
 title: ":: Operator"
 ---
 
-## Format 
+## Format
 
 ```
 <GROUP> :: <ELEMENTARY ITEM>
 ```
->‘A name can be made unique if it exists within a hierarchy of names, and the name
->can be identified by specifying one or more higher-level names in the hierarchy.
->The higher-level names are called qualifiers, and the process by which such names
->are made unique is called qualification.’  	COBOL Language Reference 
 
-In COBOL syntax, this qualification is done by using one or more phrases with `IN` or ``OF`` followed by a qualifier.
+> ‘A name can be made unique if it exists within a hierarchy of names, and the name
+> can be identified by specifying one or more higher-level names in the hierarchy.
+> The higher-level names are called qualifiers, and the process by which such names
+> are made unique is called qualification.’ COBOL Language Reference
+
+In COBOL syntax, this qualification is done by using one or more phrases with `IN` or `OF` followed by a qualifier.
 
 It is only necessary to specify enough qualification to make the name unique.
 
-Difficulties with ``IN`` or ``OF`` operators :
-* Data items must always be qualified from the _lower level_ item to the _higher level_ group item. This is not consistent with more modern programming languages, where variables are qualified from the _higher level_ data structure to the variable of interest. This can thus be considered a backwards practice by younger COBOL programmers.
-* This can make name completion (ie. content assist) less efficient.
+Difficulties with `IN` or `OF` operators :
+
+- Data items must always be qualified from the _lower level_ item to the _higher level_ group item. This is not consistent with more modern programming languages, where variables are qualified from the _higher level_ data structure to the variable of interest. This can thus be considered a backwards practice by younger COBOL programmers.
+- This can make name completion (ie. content assist) less efficient.
 
 TypeCobol proposes an alternative method to fully qualify data items when they are used.
 A new operator will be added for qualification of an element in a group.
 
-Instead of saying 
-		``‘A of B’`` or ``‘A in B’`` 
-we will use a new syntax based on ``‘::’`` operator 
-		``‘B::A’``
-
-
-
+Instead of saying
+`‘A of B’` or `‘A in B’`
+we will use a new syntax based on `‘::’` operator
+`‘B::A’`
 
 ## TYPECOBOL to COBOL translation
 
 The following sentence:
+
 ```
 A::B::C
 ```
+
 will be translated as:
+
 ```cobol
 C OF B OF A
 ```
 
-
-## TYPECOBOL examples 
+## TYPECOBOL examples
 
 ### WORKING-STORAGE SECTION.
 
@@ -64,17 +65,17 @@ C OF B OF A
 MOVE GR1::GR11::ELT11   TO GRX
 MOVE GR2::GR21::ELT11   TO GRX
 ```
+
 In COBOL providing the complete hierarchical path is not mandatory. It is only needed to give minimal group names to avoid any ambiguity on elementary items.
 TypeCobol respect the same logic.
 
-
-## Multi dimensional tables  
+## Multi dimensional tables
 
 In Cobol language for a multi-dimensional table, all subscripts are specified after the elementary item.
-Operator ``::`` use the same logic.
+Operator `::` use the same logic.
 
- 
 Examples
+
 ```cobol
 01 A.
     02 B OCCURS 10.
@@ -84,20 +85,18 @@ Examples
 ```
 
 To address a `D2` item we could use one of the following syntax:
+
 ```cobol
 D2 OF A (x y)
 A::D2(x y)
 ```
+
 ```cobol
 D2 OF C OF B OF A (x y)
 A::B::C::D2(x y)
 ```
 
-
-
-
-
-## Cobol examples 
+## Cobol examples
 
 ### WORKING-STORAGE SECTION.
 
@@ -120,54 +119,73 @@ A::B::C::D2(x y)
 ### PROCEDURE DIVISION.
 
 **(1)**
+
 ```cobol
 MOVE ELT11                  TO GRX
 ```
+
 ###### COBOL Z/os Error message:
 
-*IGYPS0037-S "ELT11" was not a uniquely defined name.
+_IGYPS0037-S "ELT11" was not a uniquely defined name.
 The definition to be used could not be determined from the context.
-The reference to the name was discarded.*
+The reference to the name was discarded._
 
 **(2)**
+
 ```cobol
 MOVE ELT11 OF GR11          TO GRX
 ```
+
 **(3)**
+
 ```cobol
 MOVE ELT11 OF GR1           TO GRX
 ```
+
 ###### COBOL Z/os Error message:
 
-*IGYPS0037-S "ELT11 OF GR1" was not a uniquely defined name.
+_IGYPS0037-S "ELT11 OF GR1" was not a uniquely defined name.
 The definition to be used could not be determined from the context.
-The reference to the name was discarded.*
+The reference to the name was discarded._
 
 **(4)**
+
 ```cobol
 MOVE ELT11 OF GR11 OF GR1   TO GRX
 ```
+
 **(5)**
+
 ```cobol
 MOVE ELT11 OF GR2           TO GRX
 ```
+
 **(6)**
+
 ```cobol
 MOVE ELT11 OF GR21          TO GRX
 ```
+
 **(7)**
+
 ```cobol
 MOVE ELT21 OF GR22 OF GR2   TO GRX
 ```
+
 **(8)**
+
 ```cobol
 MOVE ELT21 OF GR22          TO GRX
 ```
+
 **(9)**
+
 ```cobol
 MOVE ELT21 OF GR2           TO GRX
 ```
+
 **(10)**
+
 ```cobol
 MOVE ELT21                  TO GRX
 ```

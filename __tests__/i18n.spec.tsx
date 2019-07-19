@@ -210,7 +210,7 @@ describe("i18n", () => {
                 const { data } = matter(content)
                 expect(data).toBeObject()
                 expect(data.title).toBeString()
-                if (data.redirectFrom) expect(data).toBeArray()
+                if (data.redirectFrom) expect(data.redirectFrom).toBeArray()
                 if (data.disable !== undefined) expect(data).toBeBoolean()
               })
             })
