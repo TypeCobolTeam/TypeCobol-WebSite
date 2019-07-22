@@ -1,3 +1,7 @@
+---
+title: Functions
+---
+
 # Detailled rules of procedures and functions syntax 
 
 #### Table of Contents
@@ -14,35 +18,35 @@ All these rules begin with **TCRFUN\_**.
 
 #### Procedure invocation syntax
 ```cobol
-CALL <procedure-name>
-    <INPUT clause>?
-    <INOUT clause>?
-    <OUTPUT clause>?
-END-CALL?
+		CALL <procedure-name>
+			<INPUT clause>?
+			<INOUT clause>?
+			<OUTPUT clause>?
+		END-CALL?
 ```
 
 #### Function invocation syntax
 ```cobol
-<function-name> ( <arguments>? )
+		<function-name> ( <arguments>? )
 ```
 
 #### \_INPUT\_ clause syntax
 ```cobol
-INPUT < <SENDING MODE clause>? <parameter-name> >+
+		INPUT < <SENDING MODE clause>? <parameter-name> >+
 ```
 #### \_SHARING MODE\_ clause syntax
 ```cobol
-BY? <CONTENT | REFERENCE | VALUE>
+		BY? <CONTENT | REFERENCE | VALUE>
 ```
 
 #### \_INOUT\_ clause syntax
 ```cobol
-INOUT <parameter-name>+
+		INOUT <parameter-name>+
 ```
 
 #### \_OUTPUT\_ clause syntax
 ```cobol
-OUTPUT <parameter-name>+
+		OUTPUT <parameter-name>+
 ```
 
 <a name="call"/>
@@ -51,20 +55,20 @@ OUTPUT <parameter-name>+
 
 ## Procedure
 ```cobol
-CALL procedure-name INPUT      inputParam1 ... inputParamN
-                    IN-OUT     inoutParam1 ... inoutParamN
-                    OUTPUT     outParam1   ... outParamN
-end-call
-if procedure-name::error-code = '0000'
-   ... return OK
-else 
-   ... return KO, handle error
-end-if
+		CALL procedure-name INPUT      inputParam1 ... inputParamN
+							IN-OUT     inoutParam1 ... inoutParamN
+							OUTPUT     outParam1   ... outParamN
+		end-call
+		if procedure-name::error-code = '0000'
+		   ... return OK
+		else 
+		   ... return KO, handle error
+		end-if
 ```
 
 ## Functions
 ```cobol
-FUNCTION function-name (param1, param2, param3, ... paramN)
+		FUNCTION function-name (param1, param2, param3, ... paramN)
 ```
 This syntax is the same as the syntax for COBOL intrinsic functions and can be used in the same contexts. In particular:
   * __TCRFUN\_TCFUNC\_WHERE\_COBOL85FUNC__\_ a custom function can be called as part of any statement where an COBOL 85 intrinsic function call would be acceptable. **TODO: see if we can allow intrinsic functions in more contexts than COBOL 85.**
@@ -74,14 +78,14 @@ However, if there is any ambiguity about *function-name*, the function call must
 ### Alternate call for function
 __TCRFUN\_FUNC\_ALLOW\_CALL__ Functions can also be called like a procedure. This syntax make it easier to test the error-code.
 ```cobol
-CALL function-name INPUT      inputParam1, ... inputParamN
-                   RETURNING  returningParameter 
-end-call
-if function-name::error-code = '0000'
-   ... return OK
-else 
-   ... return KO, handle error
-end-if
+		CALL function-name INPUT      inputParam1, ... inputParamN
+						   RETURNING  returningParameter 
+		end-call
+		if function-name::error-code = '0000'
+		   ... return OK
+		else 
+		   ... return KO, handle error
+		end-if
 ```
 
 ## Common rules for functions and procedures calls
@@ -107,8 +111,8 @@ end-if
 ** `i2`, `i3` are passed `BY CONTENT`
 
 ```cobol
-CALL myprocedure INPUT i1 BY CONTENT i2 i3 BY REFERENCE i4 i5 
-                 OUTPUT o1 o2 
+		CALL myprocedure INPUT i1 BY CONTENT i2 i3 BY REFERENCE i4 i5 
+						 OUTPUT o1 o2 
 END-CALL.
 ```
 * __TCRFUN\_CALL\_INOUT\_AND\_OUTPUT\_BY\_REFERENCE__  `INOUT`,`OUTPUT` parameters are passed by reference.
@@ -133,33 +137,33 @@ Following rules applies to determiner if a match is successful:
 
 ## Procedure declaration
 ```cobol
-DECLARE PROCEDURE procedure-name PRIVATE|PUBLIC
-  INPUT       <parameter descriptions>
-  IN-OUT      <parameter descriptions>
-  OUTPUT      <parameter descriptions>
-  ERROR-CODE  <error-code values description>.
+		DECLARE PROCEDURE procedure-name PRIVATE|PUBLIC
+		  INPUT       <parameter descriptions>
+		  IN-OUT      <parameter descriptions>
+		  OUTPUT      <parameter descriptions>
+		  ERROR-CODE  <error-code values description>.
 
-DATA DIVISION.
-    WORKING-STORAGE SECTION.
-        <data declaration(s)>
-PROCEDURE DIVISION.
-        <COBOL and/or TypeCobol statement(s)>
-END-DECLARE.
+		DATA DIVISION.
+			WORKING-STORAGE SECTION.
+				<data declaration(s)>
+		PROCEDURE DIVISION.
+				<COBOL and/or TypeCobol statement(s)>
+		END-DECLARE.
 ```
 
 ## Function declaration
 ```cobol
-DECLARE FUNCTION function-name PRIVATE|PUBLIC
-  INPUT       <parameter descriptions>
-  RETURNING   <parameter-name>
-  ERROR-CODE  <error-code values description>.
+		DECLARE FUNCTION function-name PRIVATE|PUBLIC
+		  INPUT       <parameter descriptions>
+		  RETURNING   <parameter-name>
+		  ERROR-CODE  <error-code values description>.
 
-DATA DIVISION.
-    WORKING-STORAGE SECTION.
-        <data declaration(s)>
-PROCEDURE DIVISION.
-        <COBOL and/or TypeCobol statement(s)>
-END-DECLARE.
+		DATA DIVISION.
+			WORKING-STORAGE SECTION.
+				<data declaration(s)>
+		PROCEDURE DIVISION.
+				<COBOL and/or TypeCobol statement(s)>
+		END-DECLARE.
 ```
 
 ## Common rules for procedure and function declaration
@@ -219,10 +223,10 @@ Lists of \_input\_, \_in-out\_ and \_output\_ parameters can contain 0 to N para
 __TCRFUN\_LEVEL\_88\_PARAMETERS__ Level 88 parameters are declared like a standard COBOL 85 parameters:
 **TODO: see if we can provide enum grammar, instead of levels 88 **
 ```cobol
-DECLARE FUNCTION function-name PRIVATE
-  input     typeOfTransportpic X
-              88 typeOfTransport-Car  value 'C'
-              88 typeOfTransport-Bike value 'B'.
+		DECLARE FUNCTION function-name PRIVATE
+		  input     typeOfTransportpic X
+					  88 typeOfTransport-Car  value 'C'
+					  88 typeOfTransport-Bike value 'B'.
 ``` 
 
 ### Error-code values
@@ -264,32 +268,32 @@ It depends on the procedure visibility: *private* or *public*
 Private procedure declaration must be put outside paragraph and section declaration.
 
 ```Cobol
-IDENTIFICATION DIVISION.
-PROGRAM-ID. TypeCobol.
-data division.
-working-storage section.
-01 a pic 9(04).
-01 b pic 9(04).
-01 c pic 9(04).
-PROCEDURE DIVISION.
-   move 1 to a
-   move 2 to b
-   perform MyParagraph
-.
-MyParagraph.
-   CALL MyProcedure input(a, b)
-                    output(c)
-.
-declare procedure MyProcedure private
-  input  param1 pic 9(04)
-         param2 pic 9(04)
-  output outParam1 pic 9(04).
-procedure division.
-   compute outParam1 = param1 + param2 
-   .
-end-declare.
-.
- END PROGRAM.
+		IDENTIFICATION DIVISION.
+		PROGRAM-ID. TypeCobol.
+		data division.
+		working-storage section.
+		01 a pic 9(04).
+		01 b pic 9(04).
+		01 c pic 9(04).
+		PROCEDURE DIVISION.
+		   move 1 to a
+		   move 2 to b
+		   perform MyParagraph
+		.
+		MyParagraph.
+		   CALL MyProcedure input(a, b)
+							output(c)
+		.
+		declare procedure MyProcedure private
+		  input  param1 pic 9(04)
+				 param2 pic 9(04)
+		  output outParam1 pic 9(04).
+		procedure division.
+		   compute outParam1 = param1 + param2 
+		   .
+		end-declare.
+		.
+		 END PROGRAM.
 ```
 
 #### Public procedure
@@ -300,23 +304,23 @@ The only way to call your program is through a public function or procedure.
 Technically all functions and procedure will be generated into a sub-programs and your procedure division will contains code to call theses sub-programs.
 
 ```Cobol
-IDENTIFICATION DIVISION.
-PROGRAM-ID. TypeCobol.
-PROCEDURE DIVISION.
-declare procedure MyProcedure private
- input  param1    pic 9(04)
- output outParam1 pic 9(04).
-procedure division.
-   ...
-   .
-end-declare.
-declare function MyPublic public
- input     param1 9(04)
- returning result type bool.
- procedure division.
-   ...
-   .
-end-declare.
-.
-END PROGRAM.
+		IDENTIFICATION DIVISION.
+		PROGRAM-ID. TypeCobol.
+		PROCEDURE DIVISION.
+		declare procedure MyProcedure private
+		 input  param1    pic 9(04)
+		 output outParam1 pic 9(04).
+		procedure division.
+		   ...
+		   .
+		end-declare.
+		declare function MyPublic public
+		 input     param1 9(04)
+		 returning result type bool.
+		 procedure division.
+		   ...
+		   .
+		end-declare.
+		.
+		END PROGRAM.
 ```
