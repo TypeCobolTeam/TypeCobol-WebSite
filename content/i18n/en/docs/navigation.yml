@@ -45,4 +45,6 @@
       href: language/detailed-rules/unsafe-clause.html
     - item: ":: Operator"
       href: language/detailed-rules/name-qualification-syntax.html
+    - item: Function generation
+      href: language/detailed-rules/typecobol-function-generation.html
 # stopped at detail rules atm WIP
