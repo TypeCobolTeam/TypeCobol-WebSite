@@ -11,10 +11,10 @@ In Cobol 85, pointers cannot be incremented or decremented by a numeric variable
 TypeCobol allows you to use the syntax :
 
 ```cobol
-SET MyPointer UP BY n
-SET MyPointer UP BY 1
-SET MyPointer DOWN BY n
-SET MyPointer DOWN BY 1
+       SET MyPointer UP BY n
+       SET MyPointer UP BY 1
+       SET MyPointer DOWN BY n
+       SET MyPointer DOWN BY 1
 ```
 
 Where:
@@ -27,8 +27,8 @@ Where:
 If a pointer is used that way, the code generation must add a redefines to the pointer like this:
 
 ```cobol
-01 MyPointer pointer.
-01 MyPointer-HASH redefines MyPointer pic 9(05) comp-5.
+       01 MyPointer pointer.
+       01 MyPointer-HASH redefines MyPointer pic 9(05) comp-5.
 ```
 
 ## Detailled rules
