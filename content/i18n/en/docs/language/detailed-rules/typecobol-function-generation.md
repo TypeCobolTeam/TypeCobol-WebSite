@@ -52,16 +52,16 @@ is translated into this COBOL 85 code:
 ```
 
 
-* __TCRFUN_CODEGEN_AS_NESTED_PROGRAM__ The procedure or function declaration header becomes a program identification header with neither `INITIAL`, `RECURSIVE` or `COMMON` phrase, nor authoring properties. The information regarding the procedure or function access modifier is not translatable and is therefore lost.
-* __TCRFUN_CODEGEN_NO_ADDITIONAL_DATA_SECTION__ Each section of the `DATA DIVISION` will only be present in the generated code if it was present in the original code.
-* __TCRFUN_CODEGEN_PARAMETERS_IN_LINKAGE_SECTION__ Each `INPUT`, `OUTPUT`, `IN-OUT` or `RETURNING` parameter is generated as an entry of the `LINKAGE SECTION` of the generated nested program, if a data description entry with the same name is not already present.
-* __TCRFUN_CODEGEN_DATA_SECTION_AS_IS__ Each entry in a section of the `DATA DIVISION` already present in the TypeCobol source code is translated with no additional consideration than what is described in [TypeCobol Types codegen](Cobol02TYPEDEF#codegen).
-* __TCRFUN_CODEGEN_PARAMETERS_ORDER__ All `input`, `in-out`and `output` parameters are translated using the `USING` phrase, in the following order: `USING input-parameter* in-out-parameters* output-parameter* return-code`
-* __TCRFUN_CODEGEN_RETURNING_PARAMETER__ The returning parameter is translated using the `RETURNING` phrase.
+* __TCRFUN\_CODEGEN\_AS\_NESTED\_PROGRAM__ The procedure or function declaration header becomes a program identification header with neither `INITIAL`, `RECURSIVE` or `COMMON` phrase, nor authoring properties. The information regarding the procedure or function access modifier is not translatable and is therefore lost.
+* __TCRFUN\_CODEGEN\_NO\_ADDITIONAL\_DATA\_SECTION__ Each section of the `DATA DIVISION` will only be present in the generated code if it was present in the original code.
+* __TCRFUN\_CODEGEN\_PARAMETERS\_IN\_LINKAGE\_SECTION__ Each `INPUT`, `OUTPUT`, `IN-OUT` or `RETURNING` parameter is generated as an entry of the `LINKAGE SECTION` of the generated nested program, if a data description entry with the same name is not already present.
+* __TCRFUN\_CODEGEN\_DATA\_SECTION\_AS\_IS__ Each entry in a section of the `DATA DIVISION` already present in the TypeCobol source code is translated with no additional consideration than what is described in [TypeCobol Types codegen](Cobol02TYPEDEF#codegen).
+* __TCRFUN\_CODEGEN\_PARAMETERS\_ORDER__ All `input`, `in-out`and `output` parameters are translated using the `USING` phrase, in the following order: `USING input-parameter* in-out-parameters* output-parameter* return-code`
+* __TCRFUN\_CODEGEN\_RETURNING\_PARAMETER__ The returning parameter is translated using the `RETURNING` phrase.
 
 
 #Caller
-__TCRFUN_CODEGEN_CALL_PRIV_WITH_LITERAL_HASH__
+__TCRFUN\_CODEGEN\_CALL\_PRIV\_WITH\_LITERAL\_HASH__
 The generated call to a procedure must use its hasname as a literal.
 
 Example:
@@ -75,7 +75,7 @@ generated code:
            end-call
 ```
 
-__TCCODEGEN_FUNCALL_ALWAYS_ENDCALL__
+__TCCODEGEN\_FUNCALL\_ALWAYS\_ENDCALL__
 An `end-call` must always be generated for a procedure call, even if it's missing in the original TypeCobol code.
 
 
@@ -90,7 +90,7 @@ generated code:
            end-call
 ```
 
-__TCCODEGEN_FUNCALL_PARAMS__
+__TCCODEGEN\_FUNCALL\_PARAMS__
 Parameters of a generated procedure/function call must generate the following information:
  1. sharing mode 
     * if present in the TypeCobol code
@@ -117,12 +117,12 @@ generated code:
                      by reference param7
 ```
 
-__TCCODEGEN_FIXFOR_ALIGN_FUNCALL__
+__TCCODEGEN\_FIXFOR\_ALIGN\_FUNCALL__
 The `call` and the `end-call` generated for a procedure/function call must start at column 12 to avoid line truncature.
 
-__TCCODEGEN_FIXFOR_ALIGN_FUNCALL_PARAMS__
+__TCCODEGEN\_FIXFOR\_ALIGN\_FUNCALL\_PARAMS__
 For a parameter of a generated call: 
- * if it's sharing mode is present according to rule `TCCODEGEN_FUNCALL_PARAMS` (#380), it's start at column 21
+ * if it's sharing mode is present according to rule `TCCODEGEN\_FUNCALL\_PARAMS` (#380), it's start at column 21
  * The value of the paramter start at column 34 
 
 Ex:
