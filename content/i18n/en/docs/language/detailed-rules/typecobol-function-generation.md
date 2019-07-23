@@ -55,7 +55,7 @@ is translated into this COBOL 85 code:
 * __TCRFUN\_CODEGEN\_AS\_NESTED\_PROGRAM__ The procedure or function declaration header becomes a program identification header with neither `INITIAL`, `RECURSIVE` or `COMMON` phrase, nor authoring properties. The information regarding the procedure or function access modifier is not translatable and is therefore lost.
 * __TCRFUN\_CODEGEN\_NO\_ADDITIONAL\_DATA\_SECTION__ Each section of the `DATA DIVISION` will only be present in the generated code if it was present in the original code.
 * __TCRFUN\_CODEGEN\_PARAMETERS\_IN\_LINKAGE\_SECTION__ Each `INPUT`, `OUTPUT`, `IN-OUT` or `RETURNING` parameter is generated as an entry of the `LINKAGE SECTION` of the generated nested program, if a data description entry with the same name is not already present.
-* __TCRFUN\_CODEGEN\_DATA\_SECTION\_AS\_IS__ Each entry in a section of the `DATA DIVISION` already present in the TypeCobol source code is translated with no additional consideration than what is described in [TypeCobol Types codegen](Cobol02TYPEDEF#codegen).
+* __TCRFUN\_CODEGEN\_DATA\_SECTION\_AS\_IS__ Each entry in a section of the `DATA DIVISION` already present in the TypeCobol source code is translated with no additional consideration than what is described in [TypeCobol Types codegen](https://github.com/TypeCobolTeam/TypeCobol/wiki/Cobol02TYPEDEF#syntax).
 * __TCRFUN\_CODEGEN\_PARAMETERS\_ORDER__ All `input`, `in-out`and `output` parameters are translated using the `USING` phrase, in the following order: `USING input-parameter* in-out-parameters* output-parameter* return-code`
 * __TCRFUN\_CODEGEN\_RETURNING\_PARAMETER__ The returning parameter is translated using the `RETURNING` phrase.
 
@@ -122,7 +122,7 @@ The `call` and the `end-call` generated for a procedure/function call must start
 
 __TCCODEGEN\_FIXFOR\_ALIGN\_FUNCALL\_PARAMS__
 For a parameter of a generated call: 
- * if it's sharing mode is present according to rule `TCCODEGEN\_FUNCALL\_PARAMS` (#380), it's start at column 21
+ * if it's sharing mode is present according to rule `TCCODEGEN\FUNCALL\PARAMS` (#380), it's start at column 21
  * The value of the paramter start at column 34 
 
 Ex:
