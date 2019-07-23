@@ -5,14 +5,18 @@ title: Functions
 # Detailled rules of procedures and functions syntax 
 
 #### Table of Contents
+
 This page describes many rules regarding function or procedure declaration/call.
 All these rules begin with **TCRFUN\_**.
-* [Grammar reference](#grammar)
-* [Caller / How to call a function or procedure](#call)
-* [How to declare a function or procedure](#declaration)
-* [Code generation](content/i18n/en/docs/language/detailed-rules/typecobol-function-generation.md)
 
-# Grammar reference
+- [Grammar reference](#grammar)
+- [Caller / How to call a function or procedure](#call)
+- [How to declare a function or procedure](#declaration)
+- [Code generation](content/i18n/en/docs/language/detailed-rules/typecobol-function-generation.html)
+
+<a name="grammar"></a>
+
+## Grammar reference
 
 #### Procedure invocation syntax
 ```cobol
@@ -46,6 +50,8 @@ All these rules begin with **TCRFUN\_**.
 ```cobol
 		OUTPUT <parameter-name>+
 ```
+
+<a name="call"></a>
 
 # Caller / How to call a function or procedure
 
@@ -109,7 +115,7 @@ __TCRFUN\_FUNC\_ALLOW\_CALL__ Functions can also be called like a procedure. Thi
 ```cobol
 		CALL myprocedure INPUT i1 BY CONTENT i2 i3 BY REFERENCE i4 i5 
 						 OUTPUT o1 o2 
-END-CALL.
+		END-CALL.
 ```
 * __TCRFUN\_CALL\_INOUT\_AND\_OUTPUT\_BY\_REFERENCE__  `INOUT`,`OUTPUT` parameters are passed by reference.
   The \_SHARING MODE\_ clause cannot be specified.
@@ -126,6 +132,7 @@ Following rules applies to determiner if a match is successful:
  * [TCRFUN\_MATCH\_PARAMETERS\_SIZE](https://github.com/TypeCobolTeam/TypeCobol/wiki/FunctionsDeclaration)
  * [TCRFUN\_MATCH\_PARAMETERS\_COMPRESSION](https://github.com/TypeCobolTeam/TypeCobol/wiki/FunctionsDeclaration)
 
+<a name="declaration"></a>
 
 # How to declare a function or procedure
 
@@ -260,7 +267,7 @@ It depends on the procedure visibility: *private* or *public*
 #### Private procedure 
 Private procedure declaration must be put outside paragraph and section declaration.
 
-```Cobol
+```cobol
 		IDENTIFICATION DIVISION.
 		PROGRAM-ID. TypeCobol.
 		data division.
@@ -296,7 +303,7 @@ The only way to call your program is through a public function or procedure.
 
 Technically all functions and procedure will be generated into a sub-programs and your procedure division will contains code to call theses sub-programs.
 
-```Cobol
+```cobol
 		IDENTIFICATION DIVISION.
 		PROGRAM-ID. TypeCobol.
 		PROCEDURE DIVISION.
