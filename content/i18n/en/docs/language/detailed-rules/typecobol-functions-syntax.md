@@ -10,9 +10,7 @@ All these rules begin with **TCRFUN\_**.
 * [Grammar reference](#grammar)
 * [Caller / How to call a function or procedure](#call)
 * [How to declare a function or procedure](#declaration)
-* [Code generation](https://github.com/TypeCobolTeam/TypeCobol/wiki/TypeCobolFunctionsCodegen)
-
-<a name="grammar"/>
+* [Code generation](content/i18n/en/docs/language/detailed-rules/typecobol-function-generation.md)
 
 # Grammar reference
 
@@ -48,8 +46,6 @@ All these rules begin with **TCRFUN\_**.
 ```cobol
 		OUTPUT <parameter-name>+
 ```
-
-<a name="call"/>
 
 # Caller / How to call a function or procedure
 
@@ -130,8 +126,6 @@ Following rules applies to determiner if a match is successful:
  * [TCRFUN\_MATCH\_PARAMETERS\_SIZE](https://github.com/TypeCobolTeam/TypeCobol/wiki/FunctionsDeclaration)
  * [TCRFUN\_MATCH\_PARAMETERS\_COMPRESSION](https://github.com/TypeCobolTeam/TypeCobol/wiki/FunctionsDeclaration)
 
-
-<a name="declaration"/>
 
 # How to declare a function or procedure
 
@@ -236,7 +230,6 @@ __TCRFUN\_LEVEL\_88\_PARAMETERS__ Level 88 parameters are declared like a standa
 See page [Error](https://github.com/TypeCobolTeam/TypeCobol/wiki/TypeCobolErrorSyntax) for more details about error management.
 
 ### Other Rules:
-<a name="TCRFUN\_DECLARATION\_AS\_NESTED\_PROGRAM"/>
 
 __TCRFUN\_DECLARATION\_AS\_NESTED\_PROGRAM__ A procedure or a function is declared like a nested program. The declaration is inside the procedure division and outside of any section or paragraph.
 
